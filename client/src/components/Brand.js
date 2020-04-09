@@ -3,14 +3,14 @@ import Logo from '../assets/mycrypt-logo.svg';
 import styled from '@emotion/styled';
 import LogoImage from './LogoImage';
 
-const BRAND_CONTAINER = styled.div`
+const BrandContainer = styled.div`
   display: flex;
 `;
 
 function Brand(props) {
-  <BRAND_CONTAINER>
+  <BrandContainer>
     <LogoImage src={Logo} alt="mycrypt Logo" width={props.width} />
-  </BRAND_CONTAINER>;
+  </BrandContainer>;
 }
 
 export default Brand;
