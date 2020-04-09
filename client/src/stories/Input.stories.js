@@ -15,6 +15,7 @@ export const InputField = () => (
     placeholder="Placeholder"
     width="200px"
     height="50px"
+    fontSize="16px"
     onChange={action('user input')}
   />
 );
