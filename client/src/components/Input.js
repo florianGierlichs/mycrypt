@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 
-const TextInput = styled.input`
+const Input = styled.input`
   background-color: ${colors.primaryInputBackground};
   color: ${colors.primaryFont};
   font-size: 20px;
@@ -15,4 +15,4 @@ const TextInput = styled.input`
   }
 `;
 
-export default TextInput;
+export default Input;
