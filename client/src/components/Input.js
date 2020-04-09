@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-import COLORS from '../utils/COLORS';
+import colors from '../utils/colors';
 
 const TextInput = styled.input`
-  background-color: ${COLORS.primaryInputBackground};
-  color: ${COLORS.primaryFont};
+  background-color: ${colors.primaryInputBackground};
+  color: ${colors.primaryFont};
   font-size: 20px;
   border-radius: 14px;
   width: ${(props) => props.width};
