@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import colors from '../utils/colors';
+import colors from '../utils/colorsUtils';
 
 const LoginButton = styled.button`
   background-color: ${colors.primaryDark};
