@@ -9,6 +9,7 @@ const TextInput = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   padding-left: 15px;
+  border: none;
 `;
 
 export default TextInput;
