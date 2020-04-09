@@ -1,6 +1,6 @@
 const COLORS = {
   primaryYellow: '#F8F00E',
-  primaryInputBackground: '#141958',
+  primaryInputBackground: '#181E74',
   primaryFont: '#F5F5F5',
 };
 
