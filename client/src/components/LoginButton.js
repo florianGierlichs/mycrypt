@@ -15,7 +15,6 @@ const LoginButton = styled.button`
   &:hover {
     background-color: ${colors.primaryInputBackground};
   }
-
   &:active {
     transform: translateY(4px);
   }

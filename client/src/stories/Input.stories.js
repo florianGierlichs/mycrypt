@@ -9,13 +9,19 @@ export default {
   decorators: [withKnobs],
 };
 
-export const InputField = () => (
+export const InputLogin = () => (
   <Input
     value={text('')}
     placeholder="Placeholder"
-    width="200px"
-    height="50px"
-    fontSize="16px"
+    Login
     onChange={action('user input')}
   />
+);
+
+export const InputSearch = () => (
+  <Input value={text('')} Search onChange={action('user input')} />
+);
+
+export const InputStock = () => (
+  <Input value={text('')} onChange={action('user input')} />
 );
