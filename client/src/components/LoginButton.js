@@ -4,12 +4,20 @@ import colors from '../utils/colorsUtils';
 const LoginButton = styled.button`
   background-color: ${colors.primaryDark};
   color: ${colors.primaryFont};
-  font-size: ${(props) => props.fontSize};
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
   border-radius: 14px;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  border: solid 2px ${colors.primaryYellow};
   &:focus {
     outline: none;
+  }
+  &:hover {
+    background-color: ${colors.primaryInputBackground};
+  }
+
+  &:active {
+    transform: translateY(4px);
   }
 `;
 
