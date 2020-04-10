@@ -14,8 +14,6 @@ const calculateWidth = (props) => {
 const calculateHeight = (props) => {
   if (props.Login) {
     return '50px';
-  } else if (props.Search) {
-    return '30px';
   } else {
     return '30px';
   }
