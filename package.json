@@ -45,7 +45,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongodb": "^3.5.5"
+    "mongodb": "^3.5.5",
+    "prop-types": "^15.7.2"
   },
   "cacheDirectories": [
     "client/node_modules",
