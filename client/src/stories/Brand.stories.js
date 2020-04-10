@@ -6,7 +6,5 @@ export default {
   component: Brand,
 };
 
-export const BrandDefault = () => (
-  <Brand logoWidth="100px" brandFontSize="40px" />
-);
-export const BrandWidth50px = () => <Brand logoWidth="50px" />;
+export const BrandLoginPage = () => <Brand LoginPage />;
+export const BrandUserPage = () => <Brand />;
