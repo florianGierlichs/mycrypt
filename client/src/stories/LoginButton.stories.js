@@ -13,9 +13,6 @@ export const LoginButtonDefault = () => (
   <LoginButton
     value={text('')}
     placeholder="Placeholder"
-    width="140px"
-    height="40px"
-    fontSize="16px"
     onClick={action('Button clicked')}
   >
     Button
