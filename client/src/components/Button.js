@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 import colors from '../utils/colorsUtils';
 
-const LoginButton = styled.button`
+const Button = styled.button`
   background-color: ${colors.primaryDark};
   color: ${colors.primaryFont};
-  width: 140px;
-  height: 40px;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 14px;
+  padding: 5px 15px;
   border: solid 2px ${colors.primaryYellow};
   &:focus {
     outline: none;
@@ -16,8 +15,8 @@ const LoginButton = styled.button`
     background-color: ${colors.primaryInputBackground};
   }
   &:active {
-    transform: translateY(4px);
+    transform: scale(1.05);
   }
 `;
 
-export default LoginButton;
+export default Button;
