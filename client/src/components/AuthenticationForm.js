@@ -3,6 +3,7 @@ import Input from './Input';
 import Button from './Button';
 import styled from '@emotion/styled';
 import colors from '../utils/colorsUtils';
+import PropTypes from 'prop-types';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -29,10 +30,31 @@ const FormContainer = styled.div`
 `;
 
 const SwitchForm = styled.div`
+  color: ${colors.primaryFont};
   text-align: right;
+  > * {
+    color: ${colors.primaryYellow};
+  }
 `;
 
-function LoginForm() {
+const form = {
+  login: {
+    buttonText: 'Login',
+    switchFormQuestion: 'Dont have an account?',
+    anchor: '/signup',
+    linkTo: 'SignUp',
+    switchFormAnswer: 'Sign up!',
+  },
+  signUp: {
+    buttonText: 'Sign up',
+    switchFormQuestion: 'Already have an account?',
+    anchor: '/login',
+    linkTo: 'Login',
+    switchFormAnswer: 'Login!',
+  },
+};
+
+function AuthenticationForm({ type }) {
   return (
     <>
       <FormContainer>
@@ -41,9 +63,10 @@ function LoginForm() {
           <Input></Input>
         </InputContainer>
         <ButtonContainer>
-          <Button>Login</Button>
+          <Button>{form[type].buttonText}</Button>
           <SwitchForm>
-            Dont have an account? <a href="*">Sign up!</a>
+            {form[type].switchFormQuestion}{' '}
+            <a href={form[type].anchor}>{form[type].switchFormAnswer}</a>
           </SwitchForm>
         </ButtonContainer>
       </FormContainer>
@@ -51,4 +74,12 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+AuthenticationForm.propTypes = {
+  type: PropTypes.string,
+  buttonText: PropTypes.string,
+  switchFormQuestion: PropTypes.string,
+  anchor: PropTypes.string,
+  switchFormAnswer: PropTypes.string,
+};
+
+export default AuthenticationForm;
