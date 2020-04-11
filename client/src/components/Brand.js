@@ -3,26 +3,37 @@ import Logo from '../assets/mycrypt-logo.svg';
 import styled from '@emotion/styled';
 import BrandImage from './BrandImage';
 import BrandTitle from './BrandTitle';
+import PropTypes from 'prop-types';
 
 const BrandContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 300px;
+  width: ${({ size }) => {
+    if (size === 'big') {
+      return 300;
+    }
+    return 200;
+  }}px;
 `;
 
-const Box = styled.div`
-  flex-grow: 1;
+const BrandImageContainer = styled.div`
+  width: 30%;
+  margin-right: 15px;
 `;
 
-function Brand(props) {
+function Brand({ size }) {
   return (
-    <BrandContainer>
-      <Box>
-        <BrandImage src={Logo} alt="mycrypt Logo" {...props} />
-      </Box>
-      <BrandTitle {...props}>mycrypt</BrandTitle>
+    <BrandContainer size={size}>
+      <BrandImageContainer>
+        <BrandImage src={Logo} alt="mycrypt Logo" />
+      </BrandImageContainer>
+      <BrandTitle size={size}>mycrypt</BrandTitle>
     </BrandContainer>
   );
 }
+
+Brand.propTypes = {
+  size: PropTypes.string,
+};
 
 export default Brand;

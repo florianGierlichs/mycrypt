@@ -6,5 +6,5 @@ export default {
   component: Brand,
 };
 
-export const BrandLoginPage = () => <Brand big />;
-export const BrandUserPage = () => <Brand />;
+export const BrandLoginPage = () => <Brand size="big" />;
+export const BrandUserPage = () => <Brand size="small" />;
