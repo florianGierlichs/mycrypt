@@ -76,10 +76,6 @@ function AuthenticationForm({ type }) {
 
 AuthenticationForm.propTypes = {
   type: PropTypes.string,
-  buttonText: PropTypes.string,
-  switchFormQuestion: PropTypes.string,
-  anchor: PropTypes.string,
-  switchFormAnswer: PropTypes.string,
 };
 
 export default AuthenticationForm;
