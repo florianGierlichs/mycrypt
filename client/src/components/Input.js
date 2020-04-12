@@ -6,7 +6,7 @@ const inputSizes = {
 };
 
 const getInputPadding = (size = 'large') => {
-  return inputSize[size].padding;
+  return inputSizes[size].padding;
 };
 
 const Input = styled.input`
