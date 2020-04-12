@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import colors from '../utils/colorsUtils';
 
-const inputSize = {
+const inputSizes = {
   large: { padding: '10px' },
 };
 
