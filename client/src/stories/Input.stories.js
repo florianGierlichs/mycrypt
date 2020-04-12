@@ -11,6 +11,7 @@ export default {
 
 export const InputPlaceholder = () => (
   <Input
+    size="large"
     value={text('')}
     placeholder="Placeholder"
     onChange={action('user input')}
@@ -18,5 +19,10 @@ export const InputPlaceholder = () => (
 );
 
 export const InputPassword = () => (
-  <Input value={text('')} type="password" onChange={action('user input')} />
+  <Input
+    size="large"
+    value={text('')}
+    type="password"
+    onChange={action('user input')}
+  />
 );
