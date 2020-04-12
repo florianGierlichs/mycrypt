@@ -2,15 +2,11 @@ import styled from '@emotion/styled';
 import colors from '../utils/colorsUtils';
 
 const inputSize = {
-  large: { padding: '10px', margin: '7px' },
+  large: { padding: '10px' },
 };
 
 const getInputPadding = (size) => {
   return inputSize[size].padding;
-};
-
-const getInputMargin = (size) => {
-  return inputSize[size].margin;
 };
 
 const Input = styled.input`
@@ -19,7 +15,6 @@ const Input = styled.input`
   font-size: 20px;
   border-radius: 14px;
   padding: ${(props) => getInputPadding(props.size)};
-  margin: ${(props) => getInputMargin(props.size)};
   border: none;
   &:focus {
     outline: none;
