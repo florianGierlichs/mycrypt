@@ -5,7 +5,7 @@ const inputSize = {
   large: { padding: '10px' },
 };
 
-const getInputPadding = (size) => {
+const getInputPadding = (size = 'large') => {
   return inputSize[size].padding;
 };
 
