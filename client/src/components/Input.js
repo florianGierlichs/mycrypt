@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import colors from '../utils/colorsUtils';
 
 const inputSizes = {
-  large: { padding: '10px' },
+  large: { padding: '12px' },
 };
 
 const getInputPadding = (size = 'large') => {

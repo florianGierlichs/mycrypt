@@ -19,10 +19,13 @@ const InputContainer = styled.div`
   background-color: ${colors.primaryDark};
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  margin-bottom: 6px;
-
-  justify-content: space-evenly;
+  padding: 7.5px 15px;
+  margin-bottom: 7.5px;
+  height: calc(100% + 10px);
+  justify-content: space-between;
+  > * {
+    margin: 7.5px 0;
+  }
 `;
 
 const FormContainer = styled.div`
