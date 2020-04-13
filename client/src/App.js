@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Particles from 'react-particles-js';
 import { useState, useEffect } from 'react';
+import colors from './utils/colorsUtils';
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -41,10 +42,10 @@ function App() {
   return (
     <>
       <Test />
-      <h1>Hello</h1>
+      <h1 style={{ color: 'white', margin: '50px' }}>Hello</h1>
       <Particles
         style={{
-          background: 'blue',
+          background: `${colors.primaryDark}`,
           zIndex: '-10',
           width: '100%',
           height: '100%',
