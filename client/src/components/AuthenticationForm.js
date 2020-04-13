@@ -54,13 +54,13 @@ const form = {
   },
 };
 
-function AuthenticationForm({ type }) {
+function AuthenticationForm({ type, valueUsername, valuePassword }) {
   return (
     <>
       <FormContainer>
         <InputContainer>
-          <Input></Input>
-          <Input></Input>
+          <Input size="large" value={valueUsername} placeholder="Username" />
+          <Input size="large" value={valuePassword} type="password" />
         </InputContainer>
         <ButtonContainer>
           <Button>{form[type].buttonText}</Button>
@@ -76,6 +76,8 @@ function AuthenticationForm({ type }) {
 
 AuthenticationForm.propTypes = {
   type: PropTypes.string,
+  valueUsername: PropTypes.string,
+  valuePassword: PropTypes.string,
 };
 
 export default AuthenticationForm;
