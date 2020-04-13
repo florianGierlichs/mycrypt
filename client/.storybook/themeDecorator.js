@@ -1,5 +1,5 @@
 import React from 'react';
-import GlobalStyles from '../src/components/GlobalsStyles';
+import GlobalStyles from '../src/components/GlobalStyles';
 
 const themeDecorator = (storyFn) => (
   <>
