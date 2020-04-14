@@ -2,8 +2,12 @@ import React from 'react';
 import Particles from 'react-particles-js';
 import colors from '../utils/colorsUtils';
 import PropTypes from 'prop-types';
+import useWindowDimensions from '../utils/hooks';
 
-function ParticlesBackground(props) {
+function ParticlesBackground() {
+  const { height, width } = useWindowDimensions();
+  const particleNumbers =
+    width < 500 ? (height + width) / 25 : (height + width) / 15;
   return (
     <>
       <Particles
@@ -19,7 +23,7 @@ function ParticlesBackground(props) {
         params={{
           particles: {
             number: {
-              value: props.particleNumbers,
+              value: particleNumbers,
             },
             size: {
               value: 3,
