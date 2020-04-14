@@ -1,7 +1,6 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 import colors from '../utils/colorsUtils';
-import PropTypes from 'prop-types';
 import useWindowDimensions from '../utils/hooks';
 
 function ParticlesBackground() {
@@ -43,9 +42,5 @@ function ParticlesBackground() {
     </>
   );
 }
-
-ParticlesBackground.propTypes = {
-  particleNumbers: PropTypes.number,
-};
 
 export default ParticlesBackground;
