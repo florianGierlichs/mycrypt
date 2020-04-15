@@ -1,6 +1,6 @@
 import React from 'react';
 import Particles from 'react-particles-js';
-import colors from '../utils/colorsUtils';
+import colors from '../utils/colors';
 import useWindowDimensions from '../utils/hooks';
 
 function ParticlesBackground() {
@@ -11,7 +11,7 @@ function ParticlesBackground() {
     <>
       <Particles
         style={{
-          background: `linear-gradient(200deg, ${colors.primaryDark}, ${colors.backgroundSecondary})`,
+          background: `linear-gradient(200deg, ${colors.backgroundPrimary}, ${colors.BackgroundTertiary})`,
           zIndex: '-1',
           width: '100%',
           height: '100%',
@@ -31,10 +31,10 @@ function ParticlesBackground() {
               speed: 0.7,
             },
             color: {
-              value: `${colors.primaryFont}`,
+              value: `${colors.fontPrimary}`,
             },
             line_linked: {
-              color: `${colors.primaryFont}`,
+              color: `${colors.fontPrimary}`,
             },
           },
         }}

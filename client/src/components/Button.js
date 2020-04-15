@@ -1,18 +1,18 @@
 import styled from '@emotion/styled';
-import colors from '../utils/colorsUtils';
+import colors from '../utils/colors';
 
 const Button = styled.button`
-  background-color: ${colors.primaryDark};
-  color: ${colors.primaryFont};
+  background-color: ${colors.backgroundPrimary};
+  color: ${colors.fontPrimary};
   font-size: 20px;
   border-radius: 14px;
   padding: 5px 15px;
-  border: solid 2px ${colors.primaryYellow};
+  border: solid 2px ${colors.complementaryPrimary};
   &:focus {
     outline: none;
   }
   &:hover {
-    background-color: ${colors.primaryInputBackground};
+    background-color: ${colors.backgroundSecondary};
   }
   &:active {
     transform: scale(1.05);
