@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import colors from '../utils/colorsUtils';
+import colors from '../utils/colors';
 
 const inputSizes = {
   large: { padding: '12px' },
@@ -10,8 +10,8 @@ const getInputPadding = (size = 'large') => {
 };
 
 const Input = styled.input`
-  background-color: ${colors.primaryInputBackground};
-  color: ${colors.primaryFont};
+  background-color: ${colors.backgroundSecondary};
+  color: ${colors.fontPrimary};
   font-size: 20px;
   border-radius: 14px;
   padding: ${(props) => getInputPadding(props.size)};
