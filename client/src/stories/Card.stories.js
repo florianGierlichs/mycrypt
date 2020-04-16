@@ -1,16 +1,24 @@
 import React from 'react';
 import Card from '../components/Card';
+import styled from '@emotion/styled';
 
 export default {
   title: 'Card',
   component: Card,
-  // decorators: [withKnobs],
 };
 
+const Container = styled.div`
+  padding: 50px;
+`;
+
 export const CardBitcoin = () => (
-  <Card title="Bitcoin" priceValue="6574,64" id="btc" valueValue="56" />
+  <Container>
+    <Card title="Bitcoin" price={6574.64} symbol="BTC" />
+  </Container>
 );
 
-export const CardEthereum = () => (
-  <Card title="Ethereum" priceValue="124,64" id="miota" valueValue="5645" />
+export const CardIota = () => (
+  <Container>
+    <Card title="Iota" price={0.1567} symbol="MIOTA" />
+  </Container>
 );

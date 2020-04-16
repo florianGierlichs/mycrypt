@@ -29,26 +29,20 @@ const CardTitleContainer = styled.div`
 `;
 
 const CardDataContainer = styled.div`
-  width: 234px;
+  width: 254px;
 `;
 
-const CardDataPriceContainer = styled.div`
+const CardDataKeyContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
 `;
 
-const CardDataStockContainer = styled.div`
+const CardDataStockContainer = styled(CardDataKeyContainer)`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
   align-items: center;
-  margin-bottom: 40px;
-`;
-
-const CardDataValueContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
 `;
 
 const DataKeyValue = styled.div`
@@ -56,50 +50,68 @@ const DataKeyValue = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-right: 15px;
+  overflow-y: auto;
 `;
 
 const StockInput = styled(Input)`
   text-align: end;
   border-radius: 14px 0 0 14px;
   padding-right: 2px;
-`;
-
-const FlexContainer = styled.div`
-  display: flex;
-  max-width: 140px;
-  > input {
-    width: 140px;
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
   }
+  max-width: 100px;
 `;
 
-export default function Card({ title, priceValue, id, valueValue }) {
-  const [stockValue, setStockValue] = useState(`0 ${id}`);
-  //   const stockValueWithId = `${stockValue} ${id}`;
+const CurrencyIdContainer = styled.div`
+  background-color: ${colors.backgroundSecondary};
+  border-radius: 0 14px 14px 0;
+  width: 50px;
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+`;
+
+const StockInputContainer = styled.div`
+  display: flex;
+  width: 150px;
+`;
+
+export default function Card({ title, price, symbol }) {
+  const [stockValue, setStockValue] = useState('');
   return (
     <>
       <CardContainer>
         <CardTitleContainer>{title}</CardTitleContainer>
         <CardDataContainer>
-          <CardDataPriceContainer>
+          <CardDataKeyContainer>
             Price
-            <DataKeyValue>{priceValue} $</DataKeyValue>
-          </CardDataPriceContainer>
+            <DataKeyValue>{price} $</DataKeyValue>
+          </CardDataKeyContainer>
           <CardDataStockContainer>
             Stock
-            <FlexContainer>
+            <StockInputContainer>
               <StockInput
                 size="small"
                 value={stockValue}
+                type="number"
+                placeholder="0"
                 onChange={(event) => {
-                  setStockValue(`${event.target.value}`);
+                  setStockValue(event.target.value);
                 }}
               />
-            </FlexContainer>
+              <CurrencyIdContainer>{symbol}</CurrencyIdContainer>
+            </StockInputContainer>
           </CardDataStockContainer>
-          <CardDataValueContainer>
+          <CardDataKeyContainer>
             Value
-            <DataKeyValue>{valueValue} $</DataKeyValue>
-          </CardDataValueContainer>
+            <DataKeyValue>
+              {isNaN(stockValue) ? 0 : (price * stockValue).toFixed(3)} $
+            </DataKeyValue>
+          </CardDataKeyContainer>
         </CardDataContainer>
       </CardContainer>
     </>
@@ -108,7 +120,6 @@ export default function Card({ title, priceValue, id, valueValue }) {
 
 Card.propTypes = {
   title: PropTypes.string,
-  priceValue: PropTypes.string,
-  id: PropTypes.string,
-  valueValue: PropTypes.string,
+  price: PropTypes.number,
+  symbol: PropTypes.string,
 };
