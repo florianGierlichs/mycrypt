@@ -4,7 +4,7 @@ import colors from '../utils/colors';
 import Brand from './Brand';
 import Menu from '../assets/dropdown-burger-menu.svg';
 
-const SidbarContainer = styled.div`
+const HeaderContainer = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
@@ -16,7 +16,7 @@ const SidbarContainer = styled.div`
   border: solid 1px ${colors.complementaryPrimary};
 `;
 
-const SidebarDropdownButton = styled.button`
+const HeaderDropdownButton = styled.button`
   background-color: ${colors.backgroundPrimary};
   border: none;
   width: 50px;
@@ -30,13 +30,13 @@ const DropdownImage = styled.img`
   height: 100%;
 `;
 
-export default function Sidebar() {
+export default function Header() {
   return (
-    <SidbarContainer>
+    <HeaderContainer>
       <Brand size="small" />
-      <SidebarDropdownButton>
+      <HeaderDropdownButton>
         <DropdownImage src={Menu} alt="Burger-menu dropdown button" />
-      </SidebarDropdownButton>
-    </SidbarContainer>
+      </HeaderDropdownButton>
+    </HeaderContainer>
   );
 }
