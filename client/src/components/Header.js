@@ -25,6 +25,7 @@ const HeaderDropdownButton = styled.button`
     transform: scale(0.9);
   }
   z-index: 1;
+  outline: none;
 `;
 
 const DropdownImage = styled.img`
