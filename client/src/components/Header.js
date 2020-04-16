@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import Brand from './Brand';
 import Menu from '../assets/dropdown-burger-menu.svg';
+import Sidebar from './Sidebar';
 
 const HeaderContainer = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   background-color: ${colors.backgroundPrimary};
@@ -23,6 +24,7 @@ const HeaderDropdownButton = styled.button`
   &:active {
     transform: scale(0.9);
   }
+  z-index: 1;
 `;
 
 const DropdownImage = styled.img`
@@ -31,12 +33,19 @@ const DropdownImage = styled.img`
 `;
 
 export default function Header() {
+  const [sidebar, setSidbar] = useState(false);
+  const switchSidebar = () => {
+    setSidbar(!sidebar);
+  };
   return (
-    <HeaderContainer>
-      <Brand size="small" />
-      <HeaderDropdownButton>
-        <DropdownImage src={Menu} alt="Burger-menu dropdown button" />
-      </HeaderDropdownButton>
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        <Brand size="small" />
+        <HeaderDropdownButton onClick={switchSidebar}>
+          <DropdownImage src={Menu} alt="Burger-menu dropdown button" />
+        </HeaderDropdownButton>
+      </HeaderContainer>
+      <Sidebar active={sidebar} />
+    </>
   );
 }
