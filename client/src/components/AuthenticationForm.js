@@ -62,7 +62,12 @@ function AuthenticationForm({ type, valueUsername, valuePassword }) {
       <FormContainer>
         <InputContainer>
           <Input size="large" value={valueUsername} placeholder="Username" />
-          <Input size="large" value={valuePassword} type="password" />
+          <Input
+            size="large"
+            value={valuePassword}
+            placeholder="Password"
+            type="password"
+          />
         </InputContainer>
         <ButtonContainer>
           <Button>{form[type].buttonText}</Button>
