@@ -6,4 +6,4 @@ export default {
   component: Header,
 };
 
-export const HeaderMobile = () => <Header />;
+export const HeaderMobile = () => <Header userName="username123" />;
