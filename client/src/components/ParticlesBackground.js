@@ -11,7 +11,7 @@ function ParticlesBackground() {
     <>
       <Particles
         style={{
-          background: `linear-gradient(200deg, ${colors.backgroundPrimary}, ${colors.BackgroundTertiary})`,
+          background: `linear-gradient(200deg, ${colors.backgroundPrimary}, ${colors.backgroundTertiary})`,
           zIndex: '-1',
           width: '100%',
           height: '100%',

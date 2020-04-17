@@ -34,7 +34,7 @@ const DropdownImage = styled.img`
   height: 100%;
 `;
 
-export default function Header({ userName }) {
+export default function Header({ userName, lastLogin, portfolio }) {
   const [sidebar, setSidbar] = useState(false);
   const switchSidebar = () => {
     setSidbar(!sidebar);
@@ -47,11 +47,18 @@ export default function Header({ userName }) {
           <DropdownImage src={Menu} alt="Burger-menu dropdown button" />
         </HeaderDropdownButton>
       </HeaderContainer>
-      <Sidebar active={sidebar} userName={userName} />
+      <Sidebar
+        active={sidebar}
+        userName={userName}
+        lastLogin={lastLogin}
+        portfolio={portfolio}
+      />
     </>
   );
 }
 
 Header.propTypes = {
   userName: PropTypes.string,
+  lastLogin: PropTypes.string,
+  portfolio: PropTypes.string,
 };
