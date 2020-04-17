@@ -16,7 +16,7 @@ const SearchInput = styled.input`
 export default function Search() {
   return (
     <>
-      <SearchInput type="search" />
+      <SearchInput type="search" value="" placeholder="search" />
     </>
   );
 }
