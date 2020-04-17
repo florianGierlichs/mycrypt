@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
-import Brand from './Brand';
 import Menu from '../assets/dropdown-burger-menu.svg';
 import Sidebar from './Sidebar';
+import PropTypes from 'prop-types';
+import BrandHeader from './BrandHeader';
 
 const HeaderContainer = styled.div`
   position: absolute;
@@ -33,20 +34,24 @@ const DropdownImage = styled.img`
   height: 100%;
 `;
 
-export default function Header() {
+export default function Header({ userName }) {
   const [sidebar, setSidbar] = useState(false);
   const switchSidebar = () => {
     setSidbar(!sidebar);
   };
   return (
     <>
-      <HeaderContainer>
-        <Brand size="small" />
+      <HeaderContainer active={sidebar}>
+        <BrandHeader size="small" active={sidebar} />
         <HeaderDropdownButton onClick={switchSidebar}>
           <DropdownImage src={Menu} alt="Burger-menu dropdown button" />
         </HeaderDropdownButton>
       </HeaderContainer>
-      <Sidebar active={sidebar} />
+      <Sidebar active={sidebar} userName={userName} />
     </>
   );
 }
+
+Header.propTypes = {
+  userName: PropTypes.string,
+};
