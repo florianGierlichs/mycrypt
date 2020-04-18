@@ -7,7 +7,7 @@ import Search from './Search';
 
 const SidebarContainer = styled.div`
   width: 80%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   right: ${({ active }) => (!active ? -80 : 0)}%;
   background: linear-gradient(
