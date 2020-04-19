@@ -30,6 +30,9 @@ const AddButtonLabel = styled.label`
     transform: scale(0.98);
     background-color: ${colors.backgroundQuaternary};
   }
+  &:active > * {
+    background-color: ${colors.backgroundQuaternary};
+  }
 `;
 
 const AddButtonImage = styled.img`
