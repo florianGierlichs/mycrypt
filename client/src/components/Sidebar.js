@@ -77,7 +77,7 @@ export default function Sidebar({ active, userName, lastLogin, portfolio }) {
         </FlexContainer>
         <FlexContainer>
           <div>Add cryptocurrency</div>
-          <Search />
+          <Search active={active} />
         </FlexContainer>
       </UserContainer>
     </SidebarContainer>
