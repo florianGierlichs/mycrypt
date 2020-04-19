@@ -35,20 +35,20 @@ const DropdownImage = styled.img`
 `;
 
 export default function Header({ userName, lastLogin, portfolio }) {
-  const [sidebar, setSidbar] = useState(false);
+  const [showSidebar, setShowSidbar] = useState(false);
   const switchSidebar = () => {
-    setSidbar(!sidebar);
+    setShowSidbar(!showSidebar);
   };
   return (
     <>
-      <HeaderContainer active={sidebar}>
-        <BrandHeader size="small" active={sidebar} />
+      <HeaderContainer>
+        <BrandHeader size="small" active={showSidebar} />
         <HeaderDropdownButton onClick={switchSidebar}>
           <DropdownImage src={Menu} alt="Burger-menu dropdown button" />
         </HeaderDropdownButton>
       </HeaderContainer>
       <Sidebar
-        active={sidebar}
+        active={showSidebar}
         userName={userName}
         lastLogin={lastLogin}
         portfolio={portfolio}
