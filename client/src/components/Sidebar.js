@@ -49,6 +49,7 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 200px;
 `;
 
 const PortfolioContainer = styled.div`
