@@ -24,7 +24,3 @@ export default function useWindowDimensions() {
 
   return windowDimensions;
 }
-
-// export function useCryptoSearch() {
-//   const [searchValue, setSearchValue] = useState('');
-// }
