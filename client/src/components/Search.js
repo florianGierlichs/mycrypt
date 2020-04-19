@@ -13,6 +13,7 @@ const SearchInput = styled.input`
   outline: none;
   font-size: 20px;
   margin-top: 5px;
+  max-width: 200px;
   &:focus + span {
     transform: scale(1);
   }
@@ -20,7 +21,7 @@ const SearchInput = styled.input`
 
 const Underline = styled.span`
   height: 2px;
-  width: 210px;
+  width: 180px;
   background-color: ${colors.complementaryPrimary};
   transform: scale(0, 1);
   transition: all 0.5s linear;
