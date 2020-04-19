@@ -8,6 +8,7 @@ const ListContainer = styled.ul`
   list-style-type: none;
   background-color: ${colors.backgroundSecondary};
   margin: 0;
+  margin-bottom: 20px;
   display: block;
   width: 100%;
   padding: 5px 0 5px 20px;
