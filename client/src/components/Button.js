@@ -15,7 +15,7 @@ const Button = styled.button`
     background-color: ${colors.backgroundSecondary};
   }
   &:active {
-    transform: scale(1.05);
+    transform: scale(0.95);
   }
 `;
 
