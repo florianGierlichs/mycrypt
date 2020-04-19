@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import SearchList from './SearchList';
+import PropTypes from 'prop-types';
 
 const SearchInput = styled.input`
   background-color: ${colors.backgroundSecondary};
@@ -12,8 +13,20 @@ const SearchInput = styled.input`
   outline: none;
   font-size: 20px;
   margin-top: 5px;
+  &:focus + span {
+    transform: scale(1);
+  }
 `;
 
+const Underline = styled.span`
+  height: 2px;
+  width: 210px;
+  background-color: ${colors.complementaryPrimary};
+  transform: scale(0, 1);
+  transition: all 0.5s linear;
+`;
+
+// Will be replaced with a real database
 const coins = [
   {
     id: 'bitcoin',
@@ -49,7 +62,7 @@ const coins = [
   },
 ];
 
-export default function Search() {
+export default function Search({ active }) {
   const [searchValue, setSearchValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   useEffect(() => {
@@ -62,6 +75,11 @@ export default function Search() {
     });
     setSearchResults(searchResult);
   }, [searchValue]);
+  useEffect(() => {
+    if (!active) {
+      setSearchValue('');
+    }
+  }, [active]);
   return (
     <>
       <SearchInput
@@ -70,7 +88,12 @@ export default function Search() {
         placeholder="search"
         onChange={(event) => setSearchValue(event.target.value)}
       />
+      <Underline />
       <SearchList searchResults={searchResults} />
     </>
   );
 }
+
+Search.propTypes = {
+  active: PropTypes.bool,
+};

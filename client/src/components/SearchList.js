@@ -28,6 +28,7 @@ const AddButtonLabel = styled.label`
   align-items: center;
   &:active {
     transform: scale(0.98);
+    background-color: ${colors.backgroundQuaternary};
   }
 `;
 
@@ -47,7 +48,7 @@ export default function SearchList({ searchResults }) {
       {searchResults?.map((searchResult) => (
         <li key={searchResult.id}>
           <AddButtonLabel>
-            <AddButton>
+            <AddButton onClick={() => console.log('button clicked')}>
               <AddButtonImageContainer>
                 <AddButtonImage src={Add} alt="cross icon" />
               </AddButtonImageContainer>
