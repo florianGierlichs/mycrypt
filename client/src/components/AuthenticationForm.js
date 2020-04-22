@@ -164,8 +164,6 @@ function AuthenticationForm({ type }) {
 
 AuthenticationForm.propTypes = {
   type: PropTypes.string,
-  valueUsername: PropTypes.string,
-  valuePassword: PropTypes.string,
 };
 
 export default AuthenticationForm;
