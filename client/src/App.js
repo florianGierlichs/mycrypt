@@ -4,6 +4,7 @@ import ParticlesBackground from './components/ParticlesBackground';
 import GlobalStyles from './components/GlobalStyles';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route exact path="/Signup">
             <Signup />
+          </Route>
+          <Route exact path="/Dashboard">
+            <Dashboard />
           </Route>
         </Switch>
       </Router>
