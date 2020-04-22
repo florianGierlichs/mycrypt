@@ -1,7 +1,8 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express');
 const path = require('path');
-const app = express();
+const app = express().use('*', cors());
 const port = process.env.PORT || 8080;
 
 //Import Routes
