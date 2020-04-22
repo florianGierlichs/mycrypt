@@ -45,10 +45,10 @@ const form = {
     switchFormQuestion: 'Dont have an account?',
     anchor: '/signup',
     linkTo: 'SignUp',
-    switchFormAnswer: 'Sign up!',
+    switchFormAnswer: 'Signup!',
   },
-  signUp: {
-    buttonText: 'Sign up',
+  signup: {
+    buttonText: 'Signup',
     switchFormQuestion: 'Already have an account?',
     anchor: '/login',
     linkTo: 'Login',
