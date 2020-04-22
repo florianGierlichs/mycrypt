@@ -26,7 +26,7 @@ export const Login = () => (
 export const SignUp = () => (
   <Container>
     <AuthenticationForm
-      type="signUp"
+      type="signup"
       valueUsername={text('Username')}
       valuePassword={text('Password')}
     />
