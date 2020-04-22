@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Input from './Input';
 import Button from './Button';
 import styled from '@emotion/styled';
@@ -27,7 +28,7 @@ const InputContainer = styled.div`
   }
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   width: 300px;
 `;
 
@@ -56,24 +57,75 @@ const form = {
   },
 };
 
-function AuthenticationForm({ type, valueUsername, valuePassword }) {
+function AuthenticationForm({ type }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+
+  async function getUser() {
+    const response = await fetch(`http://localhost:8080/users/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
+
+    if (!response.status === 200) {
+      throw new Error(response.statusText);
+    }
+
+    if (response.status === 200) {
+      history.push(`/dashboard/${username}`);
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (type === 'login') {
+      getUser();
+    } else if (type === 'signup') {
+      return console.log('signup clicked');
+    } else {
+      return;
+    }
+  }
+
+  function onUsernameChange(event) {
+    setUsername(event.target.value);
+  }
+
+  function onPasswordChange(event) {
+    setPassword(event.target.value);
+  }
+
   return (
     <>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <InputContainer>
-          <Input size="large" value={valueUsername} placeholder="Username" />
           <Input
             size="large"
-            value={valuePassword}
+            value={username}
+            placeholder="Username"
+            onChange={onUsernameChange}
+          />
+          <Input
+            size="large"
+            value={password}
             placeholder="Password"
             type="password"
+            onChange={onPasswordChange}
           />
         </InputContainer>
         <ButtonContainer>
           <Button>{form[type].buttonText}</Button>
           <SwitchForm>
             {form[type].switchFormQuestion}{' '}
-            <a href={form[type].anchor}>{form[type].switchFormAnswer}</a>
+            <Link to={form[type].anchor}>{form[type].switchFormAnswer}</Link>
           </SwitchForm>
         </ButtonContainer>
       </FormContainer>
