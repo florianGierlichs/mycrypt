@@ -62,24 +62,53 @@ function AuthenticationForm({ type }) {
   const [password, setPassword] = useState('');
   const history = useHistory();
 
-  async function getUser() {
-    const response = await fetch(`http://localhost:8080/users/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    });
+  async function loginUser() {
+    try {
+      const response = await fetch(`http://localhost:8080/users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
 
-    if (response.status !== 200) {
-      throw new Error(response.statusText);
+      if (response.status !== 200) {
+        throw new Error(response.error);
+      }
+
+      if (response.status === 200) {
+        history.push(`/dashboard/${username}`);
+      }
+    } catch (error) {
+      console.log(error);
     }
+  }
 
-    if (response.status === 200) {
-      history.push(`/dashboard/${username}`);
+  async function signupUser() {
+    try {
+      const response = await fetch(`http://localhost:8080/users/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      if (response.status !== 200) {
+        throw new Error(response.error);
+      }
+
+      if (response.status === 200) {
+        history.push(`/dashboard/${username}`);
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -87,9 +116,9 @@ function AuthenticationForm({ type }) {
     event.preventDefault();
 
     if (type === 'login') {
-      getUser();
+      loginUser();
     } else if (type === 'signup') {
-      return console.log('signup clicked');
+      signupUser();
     } else {
       return;
     }
