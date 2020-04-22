@@ -8,11 +8,11 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 const BrandContainer = styled.div`
-  margin-bottom: 100px;
+  margin: 70px 0 100px 0;
 `;
 
 function Signup() {
