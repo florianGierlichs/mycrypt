@@ -7,12 +7,20 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+  justify-content: center;
+`;
+
+const BrandContainer = styled.div`
+  margin-bottom: 100px;
 `;
 
 function Signup() {
   return (
     <MainContainer>
-      <Brand size="big" />
+      <BrandContainer>
+        <Brand size="big" />
+      </BrandContainer>
       <AuthenticationForm type="signup" valueUsername={''} valuePassword={''} />
     </MainContainer>
   );
