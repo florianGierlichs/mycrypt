@@ -79,9 +79,7 @@ function AuthenticationForm({ type }) {
         throw new Error(response.error);
       }
 
-      if (response.status === 200) {
-        history.push(`/dashboard/${username}`);
-      }
+      history.push(`/dashboard/${username}`);
     } catch (error) {
       console.log(error);
     }
@@ -104,9 +102,7 @@ function AuthenticationForm({ type }) {
         throw new Error(response.error);
       }
 
-      if (response.status === 200) {
-        history.push(`/dashboard/${username}`);
-      }
+      history.push(`/dashboard/${username}`);
     } catch (error) {
       console.log(error);
     }
