@@ -18,13 +18,13 @@ function App() {
         <GlobalStyles />
         <ParticlesBackground />
         <Switch>
-          <Route exact path="/Login">
+          <Route exact path="/login">
             <Login />
           </Route>
-          <Route exact path="/Signup">
+          <Route exact path="/signup">
             <Signup />
           </Route>
-          <Route exact path="/Dashboard/:username">
+          <Route exact path="/dashboard/:username">
             <Dashboard />
           </Route>
           <Redirect from="/" to="/login" />
