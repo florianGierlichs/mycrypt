@@ -1,16 +1,28 @@
 require('dotenv').config();
-const cors = require('cors');
 const express = require('express');
 const path = require('path');
-const app = express().use('*', cors());
+const app = express();
 const port = process.env.PORT || 8080;
+const mongoose = require('mongoose');
+
+//Connect to DB
+mongoose.connect(
+  process.env.DB_CONNECTION,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: process.env.DB_NAME,
+  },
+
+  () => console.log('connected to db!')
+);
 
 //Import Routes
 app.use(express.json());
 
 const usersRoute = require('./lib/routes/users');
 
-app.use('/users', usersRoute);
+app.use('/api/users', usersRoute);
 
 //
 app.use(express.static(path.join(__dirname, 'client/build')));
