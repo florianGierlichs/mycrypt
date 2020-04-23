@@ -64,7 +64,7 @@ function AuthenticationForm({ type }) {
 
   async function loginUser() {
     try {
-      const response = await fetch(`http://localhost:8080/users/login`, {
+      const response = await fetch(`/api/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ function AuthenticationForm({ type }) {
 
   async function signupUser() {
     try {
-      const response = await fetch(`http://localhost:8080/users/signup`, {
+      const response = await fetch(`/api/users/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -101,6 +101,8 @@ function AuthenticationForm({ type }) {
       if (response.status !== 200) {
         throw new Error(response.error);
       }
+
+      console.log('server response:', response);
 
       history.push(`/dashboard/${username}`);
     } catch (error) {
