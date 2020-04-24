@@ -15,7 +15,7 @@ const CardContainer = styled.div`
   background-color: ${colors.backgroundPrimary};
   font-size: 20px;
   color: ${colors.fontPrimary};
-  box-shadow: 10px 15px 10px ${colors.backgroundPrimary};
+  box-shadow: 0 0 15px ${colors.backgroundPrimary};
 `;
 
 const CardTitleContainer = styled.div`
