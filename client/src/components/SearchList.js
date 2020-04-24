@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CardContext } from '../utils/CardContext';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import Add from '../assets/addButton.svg';
@@ -47,12 +48,19 @@ const AddButtonImageContainer = styled.div`
 `;
 
 export default function SearchList({ searchResults }) {
+  const [cards, setCards] = useContext(CardContext);
+  const handleClick = (searchResult) => {
+    const clonedCards = [...cards];
+    clonedCards.push(searchResult);
+    setCards(clonedCards);
+    console.log(clonedCards);
+  };
   return (
     <ListContainer>
       {searchResults?.map((searchResult) => (
         <li key={searchResult.id}>
           <AddButtonLabel>
-            <AddButton onClick={() => console.log('button clicked')}>
+            <AddButton onClick={() => handleClick(searchResult)}>
               <AddButtonImageContainer>
                 <AddButtonImage src={Add} alt="cross icon" />
               </AddButtonImageContainer>

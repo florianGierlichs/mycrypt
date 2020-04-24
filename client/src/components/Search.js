@@ -32,6 +32,9 @@ const coins = [
   {
     id: 'bitcoin',
     rank: '1',
+    title: 'bitcoin',
+    symbol: 'btc',
+    price: 6000,
   },
   {
     id: 'ethereum',
@@ -40,10 +43,16 @@ const coins = [
   {
     id: 'bitcoin-cash',
     rank: '3',
+    title: 'bitcoin-cash',
+    symbol: 'bcsh',
+    price: 1000,
   },
   {
     id: 'bitcoin-sv',
     rank: '4',
+    title: 'bitcoin-sv',
+    symbol: 'bsv',
+    price: 30,
   },
   {
     id: 'bitcoin-cashed',
