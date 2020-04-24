@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import PropTypes from 'prop-types';
 import Input from './Input';
+import Check from '../assets/checkButton.svg';
 
 const CardContainer = styled.div`
   width: 300px;
@@ -53,6 +54,22 @@ const DataKeyValue = styled.div`
   overflow-y: auto;
 `;
 
+const CheckImage = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
+const CheckButton = styled.button`
+  width: 40px;
+  border: none;
+  background-color: ${colors.backgroundPrimary};
+  outline: none;
+  padding: 0 4px 0 7px;
+  &:active {
+    transform: scale(0.9);
+  }
+`;
+
 const StockInput = styled(Input)`
   text-align: end;
   border-radius: 14px 0 0 14px;
@@ -93,6 +110,9 @@ export default function Card({ title, price, symbol }) {
           </CardDataKeyContainer>
           <CardDataStockContainer>
             Stock
+            <CheckButton>
+              <CheckImage src={Check} alt="check icon" />
+            </CheckButton>
             <StockInputContainer>
               <StockInput
                 size="small"
