@@ -50,6 +50,10 @@ const AddButtonImageContainer = styled.div`
 export default function SearchList({ searchResults }) {
   const [cards, setCards] = useContext(CardContext);
   const handleClick = (searchResult) => {
+    // async function addSearchResultInDatabase() {
+
+    // }
+
     const clonedCards = [...cards];
     clonedCards.push(searchResult);
     setCards(clonedCards);
