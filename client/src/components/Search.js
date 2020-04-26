@@ -32,43 +32,30 @@ const coins = [
   {
     id: 'bitcoin',
     rank: '1',
-    title: 'bitcoin',
-    symbol: 'btc',
+    name: 'Bitcoin',
+    symbol: 'BTC',
     price: 6000,
   },
   {
     id: 'ethereum',
     rank: '2',
+    name: 'Ethereum',
+    symbol: 'ETH',
+    price: 6000,
   },
   {
     id: 'bitcoin-cash',
     rank: '3',
-    title: 'bitcoin-cash',
-    symbol: 'bcsh',
+    name: 'Bitcoin Cash',
+    symbol: 'BCH',
     price: 1000,
   },
   {
     id: 'bitcoin-sv',
     rank: '4',
-    title: 'bitcoin-sv',
-    symbol: 'bsv',
+    name: 'Bitcoin SV',
+    symbol: 'BSV',
     price: 30,
-  },
-  {
-    id: 'bitcoin-cashed',
-    rank: '3',
-  },
-  {
-    id: 'bitcoin-sved',
-    rank: '4',
-  },
-  {
-    id: 'bitcoin-cashedre',
-    rank: '3',
-  },
-  {
-    id: 'bitcoin-svedef',
-    rank: '4',
   },
 ];
 
