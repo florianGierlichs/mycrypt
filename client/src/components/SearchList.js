@@ -47,13 +47,31 @@ const AddButtonImageContainer = styled.div`
   margin-right: 15px;
 `;
 
-export default function SearchList({ searchResults }) {
+export default function SearchList({ searchResults, username }) {
   const [cards, setCards] = useContext(CardContext);
   const handleClick = (searchResult) => {
-    // async function addSearchResultInDatabase() {
+    async function addSearchResultInDatabase() {
+      try {
+        const response = await fetch('/api/users/addCrypto', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: username,
+            searchResult: searchResult,
+          }),
+        });
 
-    // }
+        if (response.status !== 200) {
+          throw new Error(response.error);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
+    addSearchResultInDatabase();
     const clonedCards = [...cards];
     clonedCards.push(searchResult);
     setCards(clonedCards);
@@ -79,4 +97,5 @@ export default function SearchList({ searchResults }) {
 
 SearchList.propTypes = {
   searchResults: PropTypes.array,
+  username: PropTypes.string,
 };
