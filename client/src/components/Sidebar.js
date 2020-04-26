@@ -41,7 +41,7 @@ const UserContainer = styled.div`
   }
 `;
 
-const UserName = styled.div`
+const Username = styled.div`
   font-size: 1.5rem;
 `;
 
@@ -60,14 +60,14 @@ const PortfolioContainer = styled.div`
   padding: 7px 24px;
 `;
 
-export default function Sidebar({ active, userName, lastLogin, portfolio }) {
+export default function Sidebar({ active, username, lastLogin, portfolio }) {
   return (
     <SidebarContainer active={active}>
       <TitleContainer active={active}>
         <Brand />
       </TitleContainer>
       <UserContainer>
-        <UserName>{userName}</UserName>
+        <Username>{username}</Username>
         <FlexContainer>
           <div>last Login:</div>
           <div>{lastLogin}</div>
@@ -78,7 +78,7 @@ export default function Sidebar({ active, userName, lastLogin, portfolio }) {
         </FlexContainer>
         <FlexContainer>
           <div>Add cryptocurrency</div>
-          <Search active={active} />
+          <Search active={active} username={username} />
         </FlexContainer>
       </UserContainer>
     </SidebarContainer>
@@ -87,7 +87,7 @@ export default function Sidebar({ active, userName, lastLogin, portfolio }) {
 
 Sidebar.propTypes = {
   active: PropTypes.bool,
-  userName: PropTypes.string,
+  username: PropTypes.string,
   lastLogin: PropTypes.string,
   portfolio: PropTypes.string,
 };
