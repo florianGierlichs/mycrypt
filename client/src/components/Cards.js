@@ -12,8 +12,8 @@ export default function Cards() {
   console.log(cards);
   return (
     <CardContainer>
-      {cards?.map(({ title, price, symbol }) => (
-        <Card title={title} price={price} symbol={symbol} />
+      {cards?.map(({ name, price, symbol }) => (
+        <Card title={name} price={price} symbol={symbol} key={name} />
       ))}
     </CardContainer>
   );
