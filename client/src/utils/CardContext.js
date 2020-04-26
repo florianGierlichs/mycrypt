@@ -13,5 +13,5 @@ export const CardProvider = ({ children }) => {
 };
 
 CardProvider.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.array,
 };
