@@ -8,7 +8,7 @@ export default {
 
 export const HeaderMobile = () => (
   <Header
-    userName="username123"
+    username="username123"
     lastLogin="01.04.2020 - 19:01"
     portfolio="8576,34"
   />
