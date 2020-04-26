@@ -72,7 +72,7 @@ const coins = [
   },
 ];
 
-export default function Search({ active }) {
+export default function Search({ active, username }) {
   const [searchValue, setSearchValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   useEffect(() => {
@@ -99,11 +99,12 @@ export default function Search({ active }) {
         onChange={(event) => setSearchValue(event.target.value)}
       />
       <Underline />
-      <SearchList searchResults={searchResults} />
+      <SearchList searchResults={searchResults} username={username} />
     </>
   );
 }
 
 Search.propTypes = {
   active: PropTypes.bool,
+  username: PropTypes.string,
 };

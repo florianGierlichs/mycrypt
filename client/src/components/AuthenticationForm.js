@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Input from './Input';
 import Button from './Button';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import PropTypes from 'prop-types';
+import { UsernameContext } from '../utils/UsernameContext';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -58,7 +59,7 @@ const form = {
 };
 
 function AuthenticationForm({ type }) {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useContext(UsernameContext);
   const [password, setPassword] = useState('');
   const history = useHistory();
 
