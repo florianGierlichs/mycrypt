@@ -9,7 +9,6 @@ const CardContainer = styled.div`
 
 export default function Cards() {
   const [cards] = useContext(CardContext);
-  console.log(cards);
   return (
     <CardContainer>
       {cards?.map(({ name, price, symbol }) => (
