@@ -10,25 +10,28 @@ import GlobalStyles from './components/GlobalStyles';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import { UsernameProvider } from './utils/UsernameContext';
 
 function App() {
   return (
     <>
       <Router>
-        <GlobalStyles />
-        <ParticlesBackground />
-        <Switch>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
-          <Route exact path="/dashboard/:username">
-            <Dashboard />
-          </Route>
-          <Redirect from="/" to="/login" />
-        </Switch>
+        <UsernameProvider>
+          <GlobalStyles />
+          <ParticlesBackground />
+          <Switch>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/dashboard/:username">
+              <Dashboard />
+            </Route>
+            <Redirect from="/" to="/login" />
+          </Switch>
+        </UsernameProvider>
       </Router>
     </>
   );
