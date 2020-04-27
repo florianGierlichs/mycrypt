@@ -28,49 +28,58 @@ const Underline = styled.span`
 `;
 
 // Will be replaced with a real database
-const coins = [
-  {
-    id: 'bitcoin',
-    rank: '1',
-    name: 'Bitcoin',
-    symbol: 'BTC',
-    price: 6000,
-  },
-  {
-    id: 'ethereum',
-    rank: '2',
-    name: 'Ethereum',
-    symbol: 'ETH',
-    price: 6000,
-  },
-  {
-    id: 'bitcoin-cash',
-    rank: '3',
-    name: 'Bitcoin Cash',
-    symbol: 'BCH',
-    price: 1000,
-  },
-  {
-    id: 'bitcoin-sv',
-    rank: '4',
-    name: 'Bitcoin SV',
-    symbol: 'BSV',
-    price: 30,
-  },
-];
+// const coins = [
+//   {
+//     id: 'bitcoin',
+//     rank: '1',
+//     name: 'Bitcoin',
+//     symbol: 'BTC',
+//     price: 6000,
+//   },
+//   {
+//     id: 'ethereum',
+//     rank: '2',
+//     name: 'Ethereum',
+//     symbol: 'ETH',
+//     price: 6000,
+//   },
+//   {
+//     id: 'bitcoin-cash',
+//     rank: '3',
+//     name: 'Bitcoin Cash',
+//     symbol: 'BCH',
+//     price: 1000,
+//   },
+//   {
+//     id: 'bitcoin-sv',
+//     rank: '4',
+//     name: 'Bitcoin SV',
+//     symbol: 'BSV',
+//     price: 30,
+//   },
+// ];
+
+const coinsDbJson =
+  'https://my-json-server.typicode.com/florianGierlichs/mycrypt/db';
 
 export default function Search({ active, username }) {
   const [searchValue, setSearchValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   useEffect(() => {
-    const searchResult = coins.filter((coin) => {
-      if (searchValue === '') {
-        return;
-      } else {
-        return coin.id.startsWith(searchValue.toLowerCase());
-      }
-    });
-    setSearchResults(searchResult);
+    async function getCoins() {
+      const response = await fetch(`${coinsDbJson}`);
+      const coinDatabase = await response.json();
+      const coins = coinDatabase.data;
+      const searchResult = coins.filter((coin) => {
+        if (searchValue === '') {
+          return;
+        } else {
+          return coin.id.startsWith(searchValue.toLowerCase());
+        }
+      });
+      setSearchResults(searchResult);
+    }
+    getCoins();
   }, [searchValue]);
   useEffect(() => {
     if (!active) {

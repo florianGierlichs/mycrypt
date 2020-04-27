@@ -74,8 +74,8 @@ export default function SearchList({ searchResults, username }) {
     addSearchResultInDatabase();
     const clonedCards = [...cards];
     clonedCards.push(searchResult);
+    console.log('clonedCards will set to cards: ', clonedCards);
     setCards(clonedCards);
-    console.log(clonedCards);
   };
   return (
     <ListContainer>
