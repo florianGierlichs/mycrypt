@@ -6,23 +6,21 @@ export const CoinDataContext = createContext();
 export const CoinDataProvider = ({ children }) => {
   const [coinData, setCoinData] = useState([]);
 
-  const getCoinData = async () => {
-    try {
-      const response = await (
-        await fetch('https://api.coincap.io/v2/assets', { mode: 'cors' })
-      ).json();
-      setCoinData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const getCoinData = async () => {
+      try {
+        const response = await fetch('/api/coins');
+        const coins = await response.json();
+        setCoinData(coins);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     getCoinData();
   }, []);
 
   return (
-    <CoinDataContext.Provider value={[coinData, getCoinData]}>
+    <CoinDataContext.Provider value={[coinData]}>
       {children}
     </CoinDataContext.Provider>
   );
