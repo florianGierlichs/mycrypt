@@ -48,8 +48,8 @@
     "express": "^4.17.1",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.9",
-    "prop-types": "^15.7.2",
-    "react-particles-js": "^3.0.3"
+    "node-fetch": "^2.6.0",
+    "prop-types": "^15.7.2"
   },
   "cacheDirectories": [
     "client/node_modules",
