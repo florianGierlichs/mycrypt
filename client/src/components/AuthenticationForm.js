@@ -103,8 +103,6 @@ function AuthenticationForm({ type }) {
         throw new Error(response.error);
       }
 
-      console.log('server response:', response);
-
       history.push(`/dashboard/${username}`);
     } catch (error) {
       console.log(error);

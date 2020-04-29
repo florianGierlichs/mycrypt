@@ -106,7 +106,7 @@ export default function Card({ title, price, symbol }) {
         <CardDataContainer>
           <CardDataKeyContainer>
             Price
-            <DataKeyValue>{price} $</DataKeyValue>
+            <DataKeyValue>{price.toFixed(3)} $</DataKeyValue>
           </CardDataKeyContainer>
           <CardDataStockContainer>
             Stock
