@@ -52,7 +52,7 @@ export default function SearchList({ searchResults, username }) {
   const handleClick = (searchResult) => {
     async function addSearchResultInDatabase() {
       try {
-        const response = await fetch('/api/users/addCrypto', {
+        const response = await fetch('/api/users/coins', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
