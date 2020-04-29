@@ -48,7 +48,7 @@ const AddButtonImageContainer = styled.div`
 `;
 
 export default function SearchList({ searchResults, username }) {
-  const [cards, setCards] = useContext(CardContext);
+  const [, getUserCardData] = useContext(CardContext);
   const handleClick = (searchResult) => {
     async function addSearchResultInDatabase() {
       try {
@@ -68,15 +68,14 @@ export default function SearchList({ searchResults, username }) {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        getUserCardData();
       }
     }
 
     addSearchResultInDatabase();
-    const clonedCards = [...cards];
-    clonedCards.push(searchResult);
-    console.log('clonedCards will set to cards: ', clonedCards);
-    setCards(clonedCards);
   };
+
   return (
     <ListContainer>
       {searchResults?.map((searchResult) => (
