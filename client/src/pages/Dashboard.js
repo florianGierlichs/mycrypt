@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Header from '../components/Header';
-import { CardProvider } from '../utils/CardContext';
+import { CoinProvider } from '../utils/CoinContext';
 import Cards from '../components/Cards';
 import { UsernameContext } from '../utils/UsernameContext';
 
@@ -8,14 +8,14 @@ function Dashboard() {
   const [username] = useContext(UsernameContext);
   return (
     <>
-      <CardProvider>
+      <CoinProvider>
         <Header
           username={username}
           lastLogin="01.04.2020 - 19:01"
           portfolio="8576,34"
         />
         <Cards />
-      </CardProvider>
+      </CoinProvider>
     </>
   );
 }

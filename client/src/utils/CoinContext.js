@@ -2,9 +2,9 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { UsernameContext } from './UsernameContext';
 
-export const CardContext = createContext();
+export const CoinContext = createContext();
 
-export const CardProvider = ({ children }) => {
+export const CoinProvider = ({ children }) => {
   const [userCoins, setUserCoins] = useState([]);
   const [username] = useContext(UsernameContext);
 
@@ -18,15 +18,16 @@ export const CardProvider = ({ children }) => {
     if (username) {
       getUserCardData();
     }
+    // eslint-disable-next-line
   }, [username]);
 
   return (
-    <CardContext.Provider value={[userCoins, getUserCardData]}>
+    <CoinContext.Provider value={[userCoins, getUserCardData]}>
       {children}
-    </CardContext.Provider>
+    </CoinContext.Provider>
   );
 };
 
-CardProvider.propTypes = {
+CoinProvider.propTypes = {
   children: PropTypes.array,
 };
