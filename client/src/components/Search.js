@@ -45,6 +45,7 @@ export default function Search({ active, username }) {
       setSearchResults(searchResult);
     }
     getCoins();
+    // eslint-disable-next-line
   }, [searchValue]);
 
   useEffect(() => {

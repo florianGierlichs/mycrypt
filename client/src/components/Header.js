@@ -11,7 +11,7 @@ const HeaderContainer = styled.div`
   top: 0;
   width: 100%;
   background-color: ${colors.backgroundPrimary};
-  padding: 45px 15px 20px 15px;
+  padding: 30px 15px 20px 15px;
   display: flex;
   justify-content: space-between;
   border-radius: 0 0 24px 24px;
@@ -25,7 +25,7 @@ const HeaderDropdownButton = styled.button`
   &:active {
     transform: scale(0.9);
   }
-  z-index: 1;
+  z-index: 3;
   outline: none;
 `;
 

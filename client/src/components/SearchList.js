@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CardContext } from '../utils/CardContext';
+import { CoinContext } from '../utils/CoinContext';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import Add from '../assets/addButton.svg';
@@ -48,7 +48,8 @@ const AddButtonImageContainer = styled.div`
 `;
 
 export default function SearchList({ searchResults, username }) {
-  const [, getUserCardData] = useContext(CardContext);
+  const [, getUserCardData] = useContext(CoinContext);
+
   const handleClick = (searchResult) => {
     async function addSearchResultInDatabase() {
       try {
