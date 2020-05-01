@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CardContext } from '../utils/CardContext';
+import { CoinContext } from '../utils/CoinContext';
 import styled from '@emotion/styled';
 import Card from './Card';
 import SliderCustom from './SliderCustom';
@@ -15,12 +15,12 @@ const CardContainer = styled.div`
 `;
 
 export default function Cards() {
-  const [cards] = useContext(CardContext);
+  const [coins] = useContext(CoinContext);
 
   return (
     <CardsContainer>
       <SliderCustom>
-        {cards?.map(({ name, priceUsd, symbol }) => (
+        {coins?.map(({ name, priceUsd, symbol }) => (
           <CardContainer key={name}>
             <Card title={name} price={Number(priceUsd)} symbol={symbol} />
           </CardContainer>

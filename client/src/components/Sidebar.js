@@ -23,6 +23,7 @@ const SidebarContainer = styled.div`
   align-items: center;
   padding-top: 50px;
   font-size: 20px;
+  z-index: 2;
 `;
 
 const TitleContainer = styled.div`
