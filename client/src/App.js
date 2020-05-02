@@ -10,30 +10,27 @@ import GlobalStyles from './components/GlobalStyles';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import { UsernameProvider } from './utils/UsernameContext';
 import { CoinDataProvider } from './utils/CoinDataContext';
 
 function App() {
   return (
     <Router>
-      <UsernameProvider>
-        <CoinDataProvider>
-          <GlobalStyles />
-          <ParticlesBackground />
-          <Switch>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/dashboard/:username">
-              <Dashboard />
-            </Route>
-            <Redirect from="/" to="/login" />
-          </Switch>
-        </CoinDataProvider>
-      </UsernameProvider>
+      <CoinDataProvider>
+        <GlobalStyles />
+        <ParticlesBackground />
+        <Switch>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path="/dashboard/:username">
+            <Dashboard />
+          </Route>
+          <Redirect from="/" to="/login" />
+        </Switch>
+      </CoinDataProvider>
     </Router>
   );
 }

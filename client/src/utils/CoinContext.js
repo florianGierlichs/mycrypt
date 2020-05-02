@@ -1,13 +1,11 @@
-import React, { useState, createContext, useContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { UsernameContext } from './UsernameContext';
 
 export const CoinContext = createContext();
 
 export const CoinProvider = ({ children }) => {
   const [userCoins, setUserCoins] = useState([]);
-  const [username] = useContext(UsernameContext);
-
+  const username = localStorage.getItem('username');
   async function getUserCardData() {
     const response = await fetch(`/api/users/${username}/coins`);
     const userCoins = await response.json();
