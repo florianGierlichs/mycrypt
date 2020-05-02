@@ -1,11 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Header from '../components/Header';
 import { CoinProvider } from '../utils/CoinContext';
 import Cards from '../components/Cards';
-import { UsernameContext } from '../utils/UsernameContext';
+import { useHistory } from 'react-router-dom';
 
 function Dashboard() {
-  const [username] = useContext(UsernameContext);
+  const username = localStorage.getItem('username');
+  const history = useHistory();
+
+  if (!username) {
+    history.push(`/login`);
+  }
+
   return (
     <>
       <CoinProvider>
