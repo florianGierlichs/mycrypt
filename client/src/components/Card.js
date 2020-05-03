@@ -16,7 +16,7 @@ const CardContainer = styled.div`
   background-color: ${colors.backgroundPrimary};
   font-size: 20px;
   color: ${colors.fontPrimary};
-  box-shadow: 0 0 15px ${colors.backgroundPrimary};
+  box-shadow: 0 0 15px 10px ${colors.backgroundPrimary};
 `;
 
 const CardTitleContainer = styled.div`
@@ -44,6 +44,9 @@ const CardDataStockContainer = styled(CardDataKeyContainer)`
   justify-content: space-between;
   margin-bottom: 40px;
   align-items: center;
+  &:focus-within > button {
+    display: inline;
+  }
 `;
 
 const DataKeyValue = styled.div`
@@ -60,11 +63,12 @@ const CheckImage = styled.img`
 `;
 
 const CheckButton = styled.button`
-  width: 40px;
+  width: 39px;
   border: none;
   background-color: ${colors.backgroundPrimary};
   outline: none;
   padding: 0 4px 0 7px;
+  display: none;
   &:active {
     transform: scale(0.9);
   }
