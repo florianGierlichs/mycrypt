@@ -6,6 +6,7 @@ export const CoinContext = createContext();
 export const CoinProvider = ({ children }) => {
   const [userCoins, setUserCoins] = useState([]);
   const username = localStorage.getItem('username');
+
   async function getUserCardData() {
     const response = await fetch(`/api/users/${username}/coins`);
     const userCoins = await response.json();

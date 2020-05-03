@@ -15,14 +15,19 @@ const CardContainer = styled.div`
 `;
 
 export default function Cards() {
-  const [coins] = useContext(CoinContext);
+  const [userCoins] = useContext(CoinContext);
 
   return (
     <CardsContainer>
       <SliderCustom>
-        {coins?.map(({ name, priceUsd, symbol }) => (
+        {userCoins?.map(({ name, priceUsd, symbol, stock }) => (
           <CardContainer key={name}>
-            <Card title={name} price={Number(priceUsd)} symbol={symbol} />
+            <Card
+              title={name}
+              price={Number(priceUsd)}
+              symbol={symbol}
+              stock={stock}
+            />
           </CardContainer>
         ))}
       </SliderCustom>
