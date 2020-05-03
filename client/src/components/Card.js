@@ -97,8 +97,31 @@ const StockInputContainer = styled.div`
   width: 150px;
 `;
 
-export default function Card({ title, price, symbol }) {
-  const [stockValue, setStockValue] = useState('');
+export default function Card({ title, price, symbol, stock }) {
+  const [stockValue, setStockValue] = useState(stock);
+
+  async function handleClick() {
+    try {
+      const response = await fetch(`/api/users/coin/stock`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: localStorage.getItem('username'),
+          coin: title,
+          stock: Number(stockValue),
+        }),
+      });
+
+      if (response.status !== 200) {
+        throw new Error(response.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <CardContainer>
@@ -110,7 +133,7 @@ export default function Card({ title, price, symbol }) {
           </CardDataKeyContainer>
           <CardDataStockContainer>
             Stock
-            <CheckButton>
+            <CheckButton onClick={handleClick}>
               <CheckImage src={Check} alt="check icon" />
             </CheckButton>
             <StockInputContainer>
@@ -142,4 +165,5 @@ Card.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
   symbol: PropTypes.string,
+  stock: PropTypes.number,
 };
