@@ -48,7 +48,7 @@ const AddButtonImageContainer = styled.div`
 `;
 
 export default function SearchList({ searchResults, username }) {
-  const [, getUserCardData] = useContext(CoinContext);
+  const [, , getUserCardData] = useContext(CoinContext);
 
   const handleClick = (searchResult) => {
     async function addSearchResultInDatabase() {
