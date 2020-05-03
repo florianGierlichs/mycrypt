@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import colors from '../utils/colors';
 import Brand from './Brand';
 import Search from './Search';
+import { CoinContext } from '../utils/CoinContext';
 
 const SidebarContainer = styled.div`
   width: 80%;
@@ -61,7 +62,9 @@ const PortfolioContainer = styled.div`
   padding: 7px 24px;
 `;
 
-export default function Sidebar({ active, username, lastLogin, portfolio }) {
+export default function Sidebar({ active, username, lastLogin }) {
+  const [, portfolio] = useContext(CoinContext);
+
   return (
     <SidebarContainer active={active}>
       <TitleContainer active={active}>
@@ -90,5 +93,4 @@ Sidebar.propTypes = {
   active: PropTypes.bool,
   username: PropTypes.string,
   lastLogin: PropTypes.string,
-  portfolio: PropTypes.string,
 };

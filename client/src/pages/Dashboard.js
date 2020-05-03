@@ -15,11 +15,7 @@ function Dashboard() {
   return (
     <>
       <CoinProvider>
-        <Header
-          username={username}
-          lastLogin="01.04.2020 - 19:01"
-          portfolio="8576,34"
-        />
+        <Header username={username} lastLogin="01.04.2020 - 19:01" />
         <Cards />
       </CoinProvider>
     </>

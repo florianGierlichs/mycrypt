@@ -5,12 +5,19 @@ export const CoinContext = createContext();
 
 export const CoinProvider = ({ children }) => {
   const [userCoins, setUserCoins] = useState([]);
+  const [portfolio, setPortfolio] = useState(0);
   const username = localStorage.getItem('username');
 
   async function getUserCardData() {
     const response = await fetch(`/api/users/${username}/coins`);
     const userCoins = await response.json();
+    const portfolio = userCoins
+      .map((coin) => coin.stock * coin.priceUsd)
+      .reduce((a, b) => a + b)
+      .toFixed(3);
+
     setUserCoins(userCoins);
+    setPortfolio(portfolio);
   }
 
   useEffect(() => {
@@ -21,7 +28,7 @@ export const CoinProvider = ({ children }) => {
   }, [username]);
 
   return (
-    <CoinContext.Provider value={[userCoins, getUserCardData]}>
+    <CoinContext.Provider value={[userCoins, portfolio, getUserCardData]}>
       {children}
     </CoinContext.Provider>
   );
