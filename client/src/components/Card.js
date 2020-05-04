@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import PropTypes from 'prop-types';
 import Input from './Input';
 import Check from '../assets/checkButton.svg';
+import { CoinContext } from '../utils/CoinContext';
 
 const CardContainer = styled.div`
   width: 300px;
@@ -103,6 +104,7 @@ const StockInputContainer = styled.div`
 
 export default function Card({ title, price, symbol, stock }) {
   const [stockValue, setStockValue] = useState(stock);
+  const [, , getUserCardData] = useContext(CoinContext);
 
   async function handleClick() {
     try {
@@ -118,9 +120,11 @@ export default function Card({ title, price, symbol, stock }) {
         }),
       });
 
-      if (response.status !== 200) {
+      if (!response.ok) {
         throw new Error(response.error);
       }
+
+      getUserCardData();
     } catch (error) {
       console.log(error);
     }
