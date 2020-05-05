@@ -8,7 +8,7 @@ export const CoinProvider = ({ children }) => {
   const [portfolio, setPortfolio] = useState(0);
   const username = localStorage.getItem('username');
 
-  async function getUserCardData() {
+  async function updateUserCardData() {
     const response = await fetch(`/api/users/${username}/coins`);
     const userCoins = await response.json();
     const portfolio = userCoins
@@ -22,13 +22,13 @@ export const CoinProvider = ({ children }) => {
 
   useEffect(() => {
     if (username) {
-      getUserCardData();
+      updateUserCardData();
     }
     // eslint-disable-next-line
   }, [username]);
 
   return (
-    <CoinContext.Provider value={[userCoins, portfolio, getUserCardData]}>
+    <CoinContext.Provider value={[userCoins, portfolio, updateUserCardData]}>
       {children}
     </CoinContext.Provider>
   );

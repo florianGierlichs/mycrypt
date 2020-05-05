@@ -104,7 +104,7 @@ const StockInputContainer = styled.div`
 
 export default function Card({ title, price, symbol, stock }) {
   const [stockValue, setStockValue] = useState(stock);
-  const [, , getUserCardData] = useContext(CoinContext);
+  const [, , updateUserCardData] = useContext(CoinContext);
 
   async function handleClick() {
     try {
@@ -124,7 +124,7 @@ export default function Card({ title, price, symbol, stock }) {
         throw new Error(response.error);
       }
 
-      getUserCardData();
+      updateUserCardData();
     } catch (error) {
       console.log(error);
     }
