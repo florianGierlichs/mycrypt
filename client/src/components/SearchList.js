@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import Add from '../assets/addButton.svg';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ListContainer = styled.ul`
   list-style-type: none;
@@ -47,8 +49,14 @@ const AddButtonImageContainer = styled.div`
   margin-right: 15px;
 `;
 
+toast.configure();
+
 export default function SearchList({ searchResults, username }) {
   const [, , updateUserCardData] = useContext(CoinContext);
+
+  const notify = () => {
+    toast('Cryptocurrency added!', { autoClose: 2000 });
+  };
 
   const handleClick = (searchResult) => {
     async function addSearchResultInDatabase() {
@@ -67,6 +75,8 @@ export default function SearchList({ searchResults, username }) {
         if (!response.ok) {
           throw new Error(response.error);
         }
+
+        notify();
       } catch (error) {
         console.log(error);
       } finally {

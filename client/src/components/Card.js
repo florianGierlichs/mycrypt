@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Input from './Input';
 import Check from '../assets/checkButton.svg';
 import { CoinContext } from '../utils/CoinContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CardContainer = styled.div`
   width: 300px;
@@ -102,9 +104,15 @@ const StockInputContainer = styled.div`
   width: 150px;
 `;
 
+toast.configure();
+
 export default function Card({ title, price, symbol, stock }) {
   const [stockValue, setStockValue] = useState(stock);
   const [, , updateUserCardData] = useContext(CoinContext);
+
+  const notify = () => {
+    toast('Stock updated', { autoClose: 2000 });
+  };
 
   async function handleClick() {
     try {
@@ -125,6 +133,7 @@ export default function Card({ title, price, symbol, stock }) {
       }
 
       updateUserCardData();
+      notify();
     } catch (error) {
       console.log(error);
     }
