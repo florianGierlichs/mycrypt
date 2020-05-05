@@ -48,7 +48,7 @@ const AddButtonImageContainer = styled.div`
 `;
 
 export default function SearchList({ searchResults, username }) {
-  const [, , getUserCardData] = useContext(CoinContext);
+  const [, , updateUserCardData] = useContext(CoinContext);
 
   const handleClick = (searchResult) => {
     async function addSearchResultInDatabase() {
@@ -70,7 +70,7 @@ export default function SearchList({ searchResults, username }) {
       } catch (error) {
         console.log(error);
       } finally {
-        getUserCardData();
+        updateUserCardData();
       }
     }
 
