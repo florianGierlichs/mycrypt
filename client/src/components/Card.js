@@ -106,7 +106,6 @@ const StockInputContainer = styled.div`
 export default function Card({ title, price, symbol, stock, id }) {
   const [stockValue, setStockValue] = useState(stock);
   const [, , updateUserCardData] = useContext(CoinContext);
-  console.log('test');
 
   async function handleClick() {
     try {
