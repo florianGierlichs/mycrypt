@@ -13,7 +13,7 @@ export const CoinProvider = ({ children }) => {
     const userCoins = await response.json();
     const portfolio = userCoins
       .map((coin) => coin.stock * coin.priceUsd)
-      .reduce((a, b) => a + b)
+      .reduce((a, b) => a + b, 0)
       .toFixed(3);
 
     setUserCoins(userCoins);
