@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Input from './Input';
 import Check from '../assets/checkButton.svg';
 import { CoinContext } from '../utils/CoinContext';
+import CardLineChart from './CardLineChart';
 
 const CardContainer = styled.div`
   width: 300px;
@@ -102,7 +103,7 @@ const StockInputContainer = styled.div`
   width: 150px;
 `;
 
-export default function Card({ title, price, symbol, stock }) {
+export default function Card({ title, price, symbol, stock, id }) {
   const [stockValue, setStockValue] = useState(stock);
   const [, , updateUserCardData] = useContext(CoinContext);
 
@@ -164,6 +165,7 @@ export default function Card({ title, price, symbol, stock }) {
             </DataKeyValue>
           </CardDataKeyContainer>
         </CardDataContainer>
+        <CardLineChart id={id} />
       </CardContainer>
     </>
   );
@@ -174,4 +176,5 @@ Card.propTypes = {
   price: PropTypes.number,
   symbol: PropTypes.string,
   stock: PropTypes.number,
+  id: PropTypes.string,
 };
