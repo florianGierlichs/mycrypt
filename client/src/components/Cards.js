@@ -20,13 +20,14 @@ export default function Cards() {
   return (
     <CardsContainer>
       <SliderCustom>
-        {userCoins?.map(({ name, priceUsd, symbol, stock }) => (
+        {userCoins?.map(({ name, priceUsd, symbol, stock, id }) => (
           <CardContainer key={name}>
             <Card
               title={name}
               price={Number(priceUsd)}
               symbol={symbol}
               stock={stock}
+              id={id}
             />
           </CardContainer>
         ))}
