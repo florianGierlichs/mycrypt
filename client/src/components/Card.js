@@ -6,6 +6,7 @@ import Input from './Input';
 import Check from '../assets/checkButton.svg';
 import { CoinContext } from '../utils/CoinContext';
 import CardLineChart from './CardLineChart';
+import DeleteButton from './buttons/DeleteButton';
 
 const CardContainer = styled.div`
   width: 300px;
@@ -25,7 +26,7 @@ const CardTitleContainer = styled.div`
   width: 274px;
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   padding: 10px;
   font-size: 1.5rem;
   border-bottom: 1px solid ${colors.complementaryPrimary};
@@ -38,13 +39,13 @@ const CardDataContainer = styled.div`
 const CardDataKeyContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 `;
 
 const CardDataStockContainer = styled(CardDataKeyContainer)`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   align-items: center;
   &:focus-within > button {
     display: inline;
@@ -166,6 +167,7 @@ export default function Card({ title, price, symbol, stock, id }) {
           </CardDataKeyContainer>
         </CardDataContainer>
         <CardLineChart id={id} />
+        <DeleteButton name={title} />
       </CardContainer>
     </>
   );
