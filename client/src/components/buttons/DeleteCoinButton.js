@@ -4,11 +4,7 @@ import colors from '../../utils/colors';
 import Delete from '../../assets/deleteButton.svg';
 import { CoinContext } from '../../utils/CoinContext';
 import PropTypes from 'prop-types';
-
-const DeleteImage = styled.img`
-  width: 100%;
-  height: 100%;
-`;
+import FullImage from '../styledComponents/FullImage';
 
 const Button = styled.button`
   border: none;
@@ -26,20 +22,20 @@ const ImageContainer = styled.div`
   width: 25px;
 `;
 
-export default function DeleteButton({ name }) {
+export default function DeleteCoinButton({ coinName }) {
   const [, , updateUserCardData] = useContext(CoinContext);
 
   const handleClick = () => {
     async function deleteCoin() {
+      const username = localStorage.getItem('username');
       try {
-        const response = await fetch('/api/users/coin/delete', {
-          method: 'PATCH',
+        const response = await fetch(`/api/users/${username}/coins`, {
+          method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username: localStorage.getItem('username'),
-            coin: name,
+            coin: coinName,
           }),
         });
 
@@ -57,14 +53,14 @@ export default function DeleteButton({ name }) {
   };
 
   return (
-    <Button onClick={() => handleClick()}>
+    <Button onClick={handleClick}>
       <ImageContainer>
-        <DeleteImage src={Delete} alt="delete icon" />
+        <FullImage src={Delete} alt="delete icon" />
       </ImageContainer>
     </Button>
   );
 }
 
-DeleteButton.propTypes = {
-  name: PropTypes.string,
+DeleteCoinButton.propTypes = {
+  coinName: PropTypes.string,
 };

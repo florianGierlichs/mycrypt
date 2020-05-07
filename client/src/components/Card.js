@@ -6,7 +6,7 @@ import Input from './Input';
 import Check from '../assets/checkButton.svg';
 import { CoinContext } from '../utils/CoinContext';
 import CardLineChart from './CardLineChart';
-import DeleteButton from './buttons/DeleteButton';
+import DeleteCoinButton from './buttons/DeleteCoinButton';
 
 const CardContainer = styled.div`
   width: 300px;
@@ -167,7 +167,7 @@ export default function Card({ title, price, symbol, stock, id }) {
           </CardDataKeyContainer>
         </CardDataContainer>
         <CardLineChart id={id} />
-        <DeleteButton name={title} />
+        <DeleteCoinButton coinName={title} />
       </CardContainer>
     </>
   );
