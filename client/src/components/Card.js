@@ -111,19 +111,19 @@ export default function Card({ title, price, symbol, stock, id }) {
   const [stockNotification, setStockNotification] = useState(-200);
   const [activeTimeout, setActiveTimeout] = useState(false);
 
-  const checkNotificationTimeout = () => {
+  const checkUpdateStockNotificationTimeout = () => {
     if (activeTimeout) {
       setStockNotification(-200);
 
       setTimeout(() => {
-        showNotification();
+        showUpdateStockNotification();
       }, 500);
     } else {
-      showNotification();
+      showUpdateStockNotification();
     }
   };
 
-  const showNotification = () => {
+  const showUpdateStockNotification = () => {
     setActiveTimeout(true);
     setStockNotification(20);
     setTimeout(() => {
@@ -151,7 +151,7 @@ export default function Card({ title, price, symbol, stock, id }) {
       }
 
       updateUserCardData();
-      checkNotificationTimeout();
+      checkUpdateStockNotificationTimeout();
     } catch (error) {
       console.log(error);
     }
