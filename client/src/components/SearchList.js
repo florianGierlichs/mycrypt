@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CoinContext } from '../utils/CoinContext';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import Add from '../assets/addButton.svg';
 import PropTypes from 'prop-types';
+import Notification from './Notification';
 
 const ListContainer = styled.ul`
   list-style-type: none;
@@ -49,6 +50,32 @@ const AddButtonImageContainer = styled.div`
 
 export default function SearchList({ searchResults, username }) {
   const [, , updateUserCardData] = useContext(CoinContext);
+  const [addCoinNotification, setAddCoinNotification] = useState(-200);
+  const [
+    activeAddCoinNotificationTimeout,
+    setActiveAddCoinNotificationTimeout,
+  ] = useState(false);
+
+  const checkAddCoinNotificationTimeout = () => {
+    if (activeAddCoinNotificationTimeout) {
+      setAddCoinNotification(-200);
+
+      setTimeout(() => {
+        showAddCoinNotification();
+      }, 500);
+    } else {
+      showAddCoinNotification();
+    }
+  };
+
+  const showAddCoinNotification = () => {
+    setActiveAddCoinNotificationTimeout(true);
+    setAddCoinNotification(20);
+    setTimeout(() => {
+      setAddCoinNotification(-200);
+      setActiveAddCoinNotificationTimeout(false);
+    }, 2500);
+  };
 
   const handleClick = (searchResult) => {
     async function addSearchResultInDatabase() {
@@ -67,6 +94,7 @@ export default function SearchList({ searchResults, username }) {
         if (!response.ok) {
           throw new Error(response.error);
         }
+        checkAddCoinNotificationTimeout();
       } catch (error) {
         console.log(error);
       } finally {
@@ -78,20 +106,25 @@ export default function SearchList({ searchResults, username }) {
   };
 
   return (
-    <ListContainer>
-      {searchResults?.map((searchResult) => (
-        <li key={searchResult.id}>
-          <AddButtonLabel>
-            <AddButton onClick={() => handleClick(searchResult)}>
-              <AddButtonImageContainer>
-                <AddButtonImage src={Add} alt="cross icon" />
-              </AddButtonImageContainer>
-            </AddButton>
-            {searchResult.id}
-          </AddButtonLabel>
-        </li>
-      ))}
-    </ListContainer>
+    <>
+      <ListContainer>
+        {searchResults?.map((searchResult) => (
+          <li key={searchResult.id}>
+            <AddButtonLabel>
+              <AddButton onClick={() => handleClick(searchResult)}>
+                <AddButtonImageContainer>
+                  <AddButtonImage src={Add} alt="cross icon" />
+                </AddButtonImageContainer>
+              </AddButton>
+              {searchResult.id}
+            </AddButtonLabel>
+          </li>
+        ))}
+      </ListContainer>
+      <Notification active={addCoinNotification} positionTop={578}>
+        Coin added!
+      </Notification>
+    </>
   );
 }
 

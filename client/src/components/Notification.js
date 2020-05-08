@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const Container = styled.div`
   padding: 4px 8px;
+  border: 1px solid ${colors.complementaryPrimary};
   border-radius: 14px;
   color: ${colors.fontPrimary};
   background-color: ${colors.backgroundSecondary};
