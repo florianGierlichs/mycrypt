@@ -7,6 +7,7 @@ import Check from '../assets/checkButton.svg';
 import { CoinContext } from '../utils/CoinContext';
 import CardLineChart from './CardLineChart';
 import DeleteCoinButton from './buttons/DeleteCoinButton';
+import Notification from './Notification';
 
 const CardContainer = styled.div`
   width: 300px;
@@ -65,7 +66,7 @@ const CheckImage = styled.img`
   height: 100%;
 `;
 
-const CheckButton = styled.button`
+const UpdateStockButton = styled.button`
   width: 39px;
   border: none;
   background-color: ${colors.backgroundPrimary};
@@ -107,6 +108,29 @@ const StockInputContainer = styled.div`
 export default function Card({ title, price, symbol, stock, id }) {
   const [stockValue, setStockValue] = useState(stock);
   const [, , updateUserCardData] = useContext(CoinContext);
+  const [stockNotification, setStockNotification] = useState(-200);
+  const [activeTimeout, setActiveTimeout] = useState(false);
+
+  const checkNotificationTimeout = () => {
+    if (activeTimeout) {
+      setStockNotification(-200);
+
+      setTimeout(() => {
+        showNotification();
+      }, 500);
+    } else {
+      showNotification();
+    }
+  };
+
+  const showNotification = () => {
+    setActiveTimeout(true);
+    setStockNotification(20);
+    setTimeout(() => {
+      setStockNotification(-200);
+      setActiveTimeout(false);
+    }, 2500);
+  };
 
   async function handleClick() {
     try {
@@ -127,6 +151,7 @@ export default function Card({ title, price, symbol, stock, id }) {
       }
 
       updateUserCardData();
+      checkNotificationTimeout();
     } catch (error) {
       console.log(error);
     }
@@ -143,9 +168,9 @@ export default function Card({ title, price, symbol, stock, id }) {
           </CardDataKeyContainer>
           <CardDataStockContainer>
             Stock
-            <CheckButton onClick={handleClick}>
+            <UpdateStockButton onClick={handleClick}>
               <CheckImage src={Check} alt="check icon" />
-            </CheckButton>
+            </UpdateStockButton>
             <StockInputContainer>
               <StockInput
                 size="small"
@@ -168,6 +193,12 @@ export default function Card({ title, price, symbol, stock, id }) {
         </CardDataContainer>
         <CardLineChart id={id} />
         <DeleteCoinButton coinName={title} />
+        <Notification active={stockNotification} positionTop={178}>
+          Stock updated!
+        </Notification>
+        {/* <Notification active={stockNotification} positionTop={390}>
+          Coin deleted!
+        </Notification> */}
       </CardContainer>
     </>
   );
