@@ -109,10 +109,13 @@ export default function Card({ title, price, symbol, stock, id }) {
   const [stockValue, setStockValue] = useState(stock);
   const [, , updateUserCardData] = useContext(CoinContext);
   const [stockNotification, setStockNotification] = useState(-200);
-  const [activeTimeout, setActiveTimeout] = useState(false);
+  const [
+    activeStockNotificationTimeout,
+    setActiveStockNotificationTimeout,
+  ] = useState(false);
 
   const checkUpdateStockNotificationTimeout = () => {
-    if (activeTimeout) {
+    if (activeStockNotificationTimeout) {
       setStockNotification(-200);
 
       setTimeout(() => {
@@ -124,11 +127,11 @@ export default function Card({ title, price, symbol, stock, id }) {
   };
 
   const showUpdateStockNotification = () => {
-    setActiveTimeout(true);
+    setActiveStockNotificationTimeout(true);
     setStockNotification(20);
     setTimeout(() => {
       setStockNotification(-200);
-      setActiveTimeout(false);
+      setActiveStockNotificationTimeout(false);
     }, 2500);
   };
 
@@ -196,9 +199,6 @@ export default function Card({ title, price, symbol, stock, id }) {
         <Notification active={stockNotification} positionTop={178}>
           Stock updated!
         </Notification>
-        {/* <Notification active={stockNotification} positionTop={390}>
-          Coin deleted!
-        </Notification> */}
       </CardContainer>
     </>
   );
