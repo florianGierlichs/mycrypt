@@ -8,7 +8,7 @@ Just create an account and use your personal dashboard to manage your coin stock
 
 If you have any suggestions or want to report a bug, please use the [issue](https://github.com/florianGierlichs/mycrypt/issues) section.
 
-![image](https://user-images.githubusercontent.com/58342773/81569565-be4caa80-939f-11ea-9b8d-1edab25658d7.png)
+<img src="https://user-images.githubusercontent.com/58342773/81569565-be4caa80-939f-11ea-9b8d-1edab25658d7.png" width="200"  />
 
 ## Develop
 
