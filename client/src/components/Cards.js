@@ -1,37 +1,19 @@
 import React, { useContext } from 'react';
 import { CoinContext } from '../utils/CoinContext';
 import styled from '@emotion/styled';
-import Card from './Card';
-import SliderCustom from './SliderCustom';
+import CarouselCustom from './CarouselCustom';
 
-const CardsContainer = styled.div`
-  padding-top: 150px;
-  display: flex;
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  justify-content: center;
+const Container = styled.div`
+  width: 100%;
+  padding-top: 140px;
 `;
 
 export default function Cards() {
   const [userCoins] = useContext(CoinContext);
 
   return (
-    <CardsContainer>
-      <SliderCustom>
-        {userCoins?.map(({ name, priceUsd, symbol, stock, id }) => (
-          <CardContainer key={name}>
-            <Card
-              title={name}
-              price={Number(priceUsd)}
-              symbol={symbol}
-              stock={stock}
-              id={id}
-            />
-          </CardContainer>
-        ))}
-      </SliderCustom>
-    </CardsContainer>
+    <Container>
+      <CarouselCustom userCoins={userCoins}></CarouselCustom>
+    </Container>
   );
 }
