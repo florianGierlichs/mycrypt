@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
 import PropTypes from 'prop-types';
@@ -21,6 +21,7 @@ const CardContainer = styled.div`
   font-size: 20px;
   color: ${colors.fontPrimary};
   box-shadow: 0 0 15px 10px ${colors.backgroundPrimary};
+  z-index: 1;
 `;
 
 const CardTitleContainer = styled.div`
@@ -108,32 +109,23 @@ const StockInputContainer = styled.div`
 export default function Card({ title, price, symbol, stock, id }) {
   const [stockValue, setStockValue] = useState(stock);
   const [, , updateUserCardData] = useContext(CoinContext);
-  const [stockNotification, setStockNotification] = useState(-200);
-  const [
-    activeStockNotificationTimeout,
-    setActiveStockNotificationTimeout,
-  ] = useState(false);
+  const [activeNotification, setActiveNotification] = useState(false);
 
-  const checkUpdateStockNotificationTimeout = () => {
-    if (activeStockNotificationTimeout) {
-      setStockNotification(-200);
+  const showNotification = () => {
+    setActiveNotification(!activeNotification);
+  };
 
-      setTimeout(() => {
-        showUpdateStockNotification();
-      }, 500);
-    } else {
-      showUpdateStockNotification();
+  useEffect(() => {
+    if (!activeNotification) {
+      return;
     }
-  };
 
-  const showUpdateStockNotification = () => {
-    setActiveStockNotificationTimeout(true);
-    setStockNotification(20);
-    setTimeout(() => {
-      setStockNotification(-200);
-      setActiveStockNotificationTimeout(false);
-    }, 2500);
-  };
+    const timeoutHandle = setTimeout(() => {
+      setActiveNotification(false);
+    }, 2000);
+
+    return () => clearTimeout(timeoutHandle);
+  }, [activeNotification]);
 
   async function handleClick() {
     try {
@@ -154,7 +146,7 @@ export default function Card({ title, price, symbol, stock, id }) {
       }
 
       updateUserCardData();
-      checkUpdateStockNotificationTimeout();
+      showNotification();
     } catch (error) {
       console.log(error);
     }
@@ -196,7 +188,7 @@ export default function Card({ title, price, symbol, stock, id }) {
         </CardDataContainer>
         <CardLineChart id={id} />
         <DeleteCoinButton coinName={title} />
-        <Notification active={stockNotification} positionTop={178}>
+        <Notification active={activeNotification} positionTop={188}>
           Stock updated!
         </Notification>
       </CardContainer>

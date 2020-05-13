@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CoinContext } from '../utils/CoinContext';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
@@ -50,32 +50,23 @@ const AddButtonImageContainer = styled.div`
 
 export default function SearchList({ searchResults, username }) {
   const [, , updateUserCardData] = useContext(CoinContext);
-  const [addCoinNotification, setAddCoinNotification] = useState(-200);
-  const [
-    activeAddCoinNotificationTimeout,
-    setActiveAddCoinNotificationTimeout,
-  ] = useState(false);
+  const [activeNotification, setActiveNotification] = useState(false);
 
-  const checkAddCoinNotificationTimeout = () => {
-    if (activeAddCoinNotificationTimeout) {
-      setAddCoinNotification(-200);
+  const showNotification = () => {
+    setActiveNotification(!activeNotification);
+  };
 
-      setTimeout(() => {
-        showAddCoinNotification();
-      }, 500);
-    } else {
-      showAddCoinNotification();
+  useEffect(() => {
+    if (!activeNotification) {
+      return;
     }
-  };
 
-  const showAddCoinNotification = () => {
-    setActiveAddCoinNotificationTimeout(true);
-    setAddCoinNotification(20);
-    setTimeout(() => {
-      setAddCoinNotification(-200);
-      setActiveAddCoinNotificationTimeout(false);
-    }, 2500);
-  };
+    const timeoutHandle = setTimeout(() => {
+      setActiveNotification(false);
+    }, 2000);
+
+    return () => clearTimeout(timeoutHandle);
+  }, [activeNotification]);
 
   const handleClick = (searchResult) => {
     async function addSearchResultInDatabase() {
@@ -94,7 +85,6 @@ export default function SearchList({ searchResults, username }) {
         if (!response.ok) {
           throw new Error(response.error);
         }
-        checkAddCoinNotificationTimeout();
       } catch (error) {
         console.log(error);
       } finally {
@@ -103,6 +93,7 @@ export default function SearchList({ searchResults, username }) {
     }
 
     addSearchResultInDatabase();
+    showNotification();
   };
 
   return (
@@ -121,7 +112,7 @@ export default function SearchList({ searchResults, username }) {
           </li>
         ))}
       </ListContainer>
-      <Notification active={addCoinNotification} positionTop={578}>
+      <Notification active={activeNotification} positionTop={578}>
         Coin added!
       </Notification>
     </>

@@ -9,11 +9,11 @@ const Container = styled.div`
   border-radius: 14px;
   color: ${colors.fontPrimary};
   background-color: ${colors.backgroundSecondary};
-  z-index: 4;
-  top: ${(props) => props.positionTop}px;
-  right: ${(props) => props.active}px;
+  top: ${({ positionTop }) => positionTop}px;
+  right: ${({ active }) => (active ? '40' : '-20')}px;
   position: absolute;
-  transition: right 1s ease-in-out;
+  transition: all 2s ease-out;
+  opacity: ${({ active }) => (active ? 1 : 0)};
 `;
 
 export default function Notification({ active, positionTop, children }) {
@@ -26,6 +26,6 @@ export default function Notification({ active, positionTop, children }) {
 
 Notification.propTypes = {
   children: PropTypes.any,
-  active: PropTypes.number,
+  active: PropTypes.bool,
   positionTop: PropTypes.number,
 };
