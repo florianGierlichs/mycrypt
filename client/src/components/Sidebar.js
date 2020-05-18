@@ -8,6 +8,7 @@ import { CoinContext } from '../utils/CoinContext';
 
 const SidebarContainer = styled.div`
   width: 80%;
+  max-width: 400px;
   min-height: 100%;
   position: fixed;
   right: ${({ active }) => (!active ? -80 : 0)}%;
