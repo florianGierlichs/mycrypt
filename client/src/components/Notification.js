@@ -12,7 +12,7 @@ const Container = styled.div`
   top: ${({ positionTop }) => positionTop}px;
   right: ${({ active }) => (active ? '40' : '-20')}px;
   position: absolute;
-  transition: all 2s ease-out;
+  transition: all 1s ease-out;
   opacity: ${({ active }) => (active ? 1 : 0)};
 `;
 
