@@ -7,11 +7,15 @@ import Search from './Search';
 import { CoinContext } from '../utils/CoinContext';
 
 const SidebarContainer = styled.div`
-  width: 80%;
-  max-width: 400px;
-  min-height: 100%;
-  position: fixed;
-  right: ${({ active }) => (!active ? -80 : 0)}%;
+  width: 300px;
+  height: 100vh;
+  ${({ mobile, active }) => {
+    if (mobile) {
+      return `position: fixed; right: ${!active ? -80 : 0}%;`;
+    } else {
+      return `left: 0`;
+    }
+  }};
   background: linear-gradient(
     200deg,
     ${colors.backgroundPrimary},
@@ -63,11 +67,12 @@ const PortfolioContainer = styled.div`
   padding: 7px 24px;
 `;
 
-export default function Sidebar({ active, username, lastLogin }) {
+export default function Sidebar({ active, lastLogin, mobile }) {
   const [, portfolio] = useContext(CoinContext);
+  const username = localStorage.getItem('username');
 
   return (
-    <SidebarContainer active={active}>
+    <SidebarContainer active={active} mobile={mobile}>
       <TitleContainer active={active}>
         <Brand />
       </TitleContainer>
@@ -94,4 +99,5 @@ Sidebar.propTypes = {
   active: PropTypes.bool,
   username: PropTypes.string,
   lastLogin: PropTypes.string,
+  mobile: PropTypes.bool,
 };
