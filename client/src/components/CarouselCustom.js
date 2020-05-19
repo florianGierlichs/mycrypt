@@ -21,11 +21,11 @@ const responsive = {
     items: 4,
   },
   desktop: {
-    breakpoint: { max: 1800, min: 1030 },
+    breakpoint: { max: 1800, min: 1300 },
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1030, min: 464 },
+    breakpoint: { max: 1300, min: 464 },
     items: 2,
   },
   mobile: {
@@ -39,7 +39,7 @@ const ImageContainer = styled.div`
 `;
 
 const ButtonRight = styled.button`
-  position: fixed;
+  position: absolute;
   right: 10px;
   outline: none;
   border: none;
@@ -52,11 +52,12 @@ const ButtonRight = styled.button`
   @media (max-width: 1020px) {
     right: 30%;
     bottom: 20px;
+    position: fixed;
   }
 `;
 
 const ButtonLeft = styled.button`
-  position: fixed;
+  position: absolute;
   left: 10px;
   outline: none;
   border: none;
@@ -69,6 +70,7 @@ const ButtonLeft = styled.button`
   @media (max-width: 1020px) {
     left: 30%;
     bottom: 20px;
+    position: fixed;
   }
 `;
 

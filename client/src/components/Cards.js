@@ -4,8 +4,13 @@ import styled from '@emotion/styled';
 import CarouselCustom from './CarouselCustom';
 
 const Container = styled.div`
-  width: 100%;
-  padding-top: 140px;
+  width: calc(100% - 350px);
+  padding-top: 20px;
+
+  @media (max-width: 1020px) {
+    width: 100%;
+    padding-top: 140px;
+  }
 `;
 
 export default function Cards() {

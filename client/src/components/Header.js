@@ -34,7 +34,7 @@ const DropdownImage = styled.img`
   height: 100%;
 `;
 
-export default function Header({ username, lastLogin }) {
+export default function Header({ mobile, lastLogin }) {
   const [showSidebar, setShowSidbar] = useState(false);
   const toggleShowSidebar = () => {
     setShowSidbar(!showSidebar);
@@ -48,7 +48,7 @@ export default function Header({ username, lastLogin }) {
           <DropdownImage src={Menu} alt="Burger-menu dropdown button" />
         </HeaderDropdownButton>
       </HeaderContainer>
-      <Sidebar active={showSidebar} username={username} lastLogin={lastLogin} />
+      <Sidebar active={showSidebar} lastLogin={lastLogin} mobile={mobile} />
     </>
   );
 }
@@ -56,4 +56,5 @@ export default function Header({ username, lastLogin }) {
 Header.propTypes = {
   username: PropTypes.string,
   lastLogin: PropTypes.string,
+  mobile: PropTypes.bool,
 };

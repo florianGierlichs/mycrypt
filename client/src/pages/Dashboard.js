@@ -5,6 +5,11 @@ import Cards from '../components/Cards';
 import { useHistory } from 'react-router-dom';
 import useWindowDimensions from '../utils/hooks';
 import Sidebar from '../components/Sidebar';
+import styled from '@emotion/styled';
+
+const Container = styled.div`
+  display: flex;
+`;
 
 function Dashboard() {
   const username = localStorage.getItem('username');
@@ -18,17 +23,15 @@ function Dashboard() {
   return (
     <>
       <CoinProvider>
-        {width < 1024 ? (
-          <Header username={username} lastLogin="08.05.2020 - 19:01" />
-        ) : (
-          <Sidebar
-            active={true}
-            username={username}
-            lastLogin="08.05.2020 - 19:01"
-          />
-        )}
+        <Container>
+          {width < 1024 ? (
+            <Header mobile={true} lastLogin="18.05.2020 - 19:01" />
+          ) : (
+            <Sidebar active={true} lastLogin="08.05.2020 - 19:01" />
+          )}
 
-        <Cards />
+          <Cards />
+        </Container>
       </CoinProvider>
     </>
   );
