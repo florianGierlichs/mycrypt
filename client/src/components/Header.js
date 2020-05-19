@@ -54,7 +54,6 @@ export default function Header({ mobile, lastLogin }) {
 }
 
 Header.propTypes = {
-  username: PropTypes.string,
   lastLogin: PropTypes.string,
   mobile: PropTypes.bool,
 };

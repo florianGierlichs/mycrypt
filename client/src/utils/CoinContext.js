@@ -35,5 +35,5 @@ export const CoinProvider = ({ children }) => {
 };
 
 CoinProvider.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.any,
 };
