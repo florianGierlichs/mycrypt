@@ -97,7 +97,6 @@ export default function Sidebar({ active, lastLogin, mobile }) {
 
 Sidebar.propTypes = {
   active: PropTypes.bool,
-  username: PropTypes.string,
   lastLogin: PropTypes.string,
   mobile: PropTypes.bool,
 };
