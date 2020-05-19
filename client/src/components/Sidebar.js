@@ -22,7 +22,7 @@ const SidebarContainer = styled.div`
     ${colors.backgroundQuaternary}
   );
   border: 2px solid ${colors.complementaryPrimary};
-  border-radius: 24px 0 0 24px;
+  border-radius: 24px;
   transition: all 700ms ease-in-out;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,11 @@ const UserContainer = styled.div`
   color: ${colors.fontPrimary};
   > * {
     margin-top: 30px;
+  }
+  @media (min-width: 1024px) {
+    > * {
+      margin-top: 50px;
+    }
   }
 `;
 
