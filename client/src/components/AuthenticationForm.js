@@ -78,13 +78,15 @@ function AuthenticationForm({ type }) {
       });
 
       if (response.status !== 200) {
-        throw new Error(response.error);
+        const error = await response.json();
+        throw new Error(error.message);
       }
 
       localStorage.setItem('username', username);
       history.push(`/dashboard/${username}`);
     } catch (error) {
       console.log(error);
+      alert(error);
     }
   }
 
