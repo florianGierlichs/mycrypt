@@ -1,6 +1,6 @@
 # mycrypt
 
-## http://mycrypt.herokuapp.com/
+## https://mycrypt.herokuapp.com/
 
 With mycrypt you have an easy way to keep track about your cryptocurrencies and your overall portfolio value.
 
