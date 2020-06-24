@@ -13,6 +13,7 @@ const Container = styled.div`
 
 function Dashboard() {
   const username = localStorage.getItem('username');
+  const lastLogin = localStorage.getItem('last Login');
   const history = useHistory();
   const { width } = useWindowDimensions();
 
@@ -25,9 +26,9 @@ function Dashboard() {
       <CoinProvider>
         <Container>
           {width < 1024 ? (
-            <Header mobile={true} lastLogin="18.05.2020 - 19:01" />
+            <Header mobile={true} lastLogin={lastLogin} />
           ) : (
-            <Sidebar active={true} lastLogin="08.05.2020 - 19:01" />
+            <Sidebar active={true} lastLogin={lastLogin} />
           )}
 
           <Cards />
