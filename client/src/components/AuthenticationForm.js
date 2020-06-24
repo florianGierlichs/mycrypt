@@ -67,7 +67,7 @@ function AuthenticationForm({ type }) {
   async function loginUser() {
     try {
       const response = await fetch(`/api/users/login`, {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -82,7 +82,10 @@ function AuthenticationForm({ type }) {
         throw new Error(error.message);
       }
 
+      const lastLogin = await response.json();
+
       localStorage.setItem('username', username);
+      localStorage.setItem('last Login', lastLogin);
       history.push(`/dashboard/${username}`);
     } catch (error) {
       console.log(error);
