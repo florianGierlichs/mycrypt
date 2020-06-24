@@ -63,6 +63,7 @@ function AuthenticationForm({ type }) {
   const history = useHistory();
 
   localStorage.removeItem('username');
+  localStorage.removeItem('last Login');
 
   async function loginUser() {
     try {
